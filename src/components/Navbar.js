@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../App.css';
-import '../css/font.css'
-import logo from '../img/logo.png'
+import '../css/font.css';
+
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +12,7 @@ function Header() {
       <div className="flex flex-col md:flex-row">
         <div className={`flex justify-between items-center py-6 px-6 md:border-none ${isOpen ? 'border-b' : 'none'}`}>
             <div>
-              <img src={logo} className="w-9 h-9"></img>
+              
             </div>
             <div className="items-center block md:hidden">
               <button onClick={() => setIsOpen(!isOpen)}>
