@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Kanit:wght@200&family=Orbitron&family=Prompt&family=Signika+Negative:wght@500&family=Slackside+One&family=Ubuntu&display=swap');
+
+.headerLove {
+    font-family: 'Slackside One', cursive;
+}
+
+.connectWallet {
+    font-family: 'Prompt', sans-serif;
+}
+
+.fontHeader { 
+    font-family: 'Orbitron', sans-serif;
+}
+
+.mainText {
+    font-family: 'Signika Negative', sans-serif;
+}
