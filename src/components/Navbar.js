@@ -6,13 +6,13 @@ import '../css/font.css';
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <>
+<div>
     {/* Header */}
-    <nav className="bg-black fixed w-full shadow-transparent2">
+    <nav className="bg-black w-full shadow-transparent2 flex-col">
       <div className="flex flex-col md:flex-row">
         <div className={`flex justify-between items-center py-6 px-6 md:border-none ${isOpen ? 'border-b' : 'none'}`}>
             <div>
-              
+              {/* Disini isi dengan Kata Ceritain */}
             </div>
             <div className="items-center block md:hidden">
               <button onClick={() => setIsOpen(!isOpen)}>
@@ -33,13 +33,10 @@ function Header() {
           <div className="flex flex-col md:flex-row px-4 py-4">
             <button className="bg-white rounded-full w-36 md:h-8 md:w-36 fontHeader text-sm">Connect Wallet</button>
           </div>
-
-
-          
         </div>
       </div>  
     </nav>
-    </>
+</div>
   );
 }
 
