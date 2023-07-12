@@ -1,6 +1,6 @@
 import React from "react";
 
-function Main() {
+function Jumbotron() {
   return (
     <div>
         Hallo
@@ -8,4 +8,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Jumbotron;
