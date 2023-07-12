@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Kanit:wght@200&family=Orbitron&family=Prompt&family=Signika+Negative:wght@500&family=Slackside+One&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=EB+Garamond:ital,wght@0,800;1,500&display=swap');
+
 
 .headerLove {
     font-family: 'Slackside One', cursive;
@@ -14,4 +17,21 @@
 
 .mainText {
     font-family: 'Signika Negative', sans-serif;
+}
+
+.bgWarna {
+    background-color: #5A96E3;
+}
+
+.textWarna {
+    color: #5A96E3;
+}
+
+.fontNavbar {
+    font-family: 'Dosis', sans-serif;
+}
+
+.fontLogo {
+    font-family: 'Dosis', sans-serif;
+    font-family: 'EB Garamond', serif;
 }
