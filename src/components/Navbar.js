@@ -1,11 +1,10 @@
 import React, { useState } from "react";
+import '../App.css';
 import '../css/font.css';
-import { useNavigate } from "react-router-dom";
 
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
-  let navigate = useNavigate()
   return (
 <div>
     {/* Header */}
@@ -15,7 +14,7 @@ function Header() {
             <div>
               <h1 className="text-2xl md:text-2xl fontLogo ml-4">
                 {/* Span untuk membuat huruf C jadi lebih besar */}
-                <span className="text-4xl">C</span> 
+                <span className="text-4xl">C</span>
                 ERITAIN
               </h1>
             </div>
@@ -29,14 +28,14 @@ function Header() {
             </div>
         </div>
 
-        <div className={`${isOpen ? 'block' : 'hidden'} md:flex flex-col md:flex-row justify-between w-full md:items-center`}>
+        <div className={`${isOpen ? 'block' : 'hidden'} md:flex flex-col md:flex-row justify-between w-full md:items-center border md:border-none mb-2 md:mb-0`}>
           <div className="flex flex-col md:flex-row mx-auto">
             <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16">Janji Tatap Muka</a>
-            <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16" >Testimoni</a>
+            <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16">Testimoni</a>
             <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16">Tentang Kami</a>
           </div>
           <div className="flex flex-col md:flex-row px-4 py-4">
-            <button className="bgWarna rounded-2xl w-36 md:h-9 md:w-36 fontNavbar text-lg hover:shadow-md mr-4" onClick={()=>navigate('/login')}>Login</button>
+            <button className="bgWarna rounded-2xl w-36 md:h-9 md:w-36 fontNavbar text-lg hover:shadow-md mr-4">Login</button>
           </div>
         </div>
       </div>  
