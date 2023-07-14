@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Kanit:wght@200&family=Orbitron&family=Prompt&family=Signika+Negative:wght@500&family=Slackside+One&family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&family=EB+Garamond:ital,wght@0,800;1,500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 .headerLove {
     font-family: 'Slackside One', cursive;
@@ -29,6 +29,10 @@
 
 .fontNavbar {
     font-family: 'Dosis', sans-serif;
+}
+
+.fontLogin {
+    font-family: 'Poppins', sans-serif;
 }
 
 .fontLogo {
