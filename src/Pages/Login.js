@@ -2,11 +2,12 @@
 import React from "react";
 import '../css/font.css';
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import Navbar from "../components/Navbar"
 function Login() {
   let navigate = useNavigate()
   return (
+    <>
+    <Navbar />
     <div className="w-full min-h-screen grid place-items-center bg-[#F6F8FD]">
       <div className="w-96 bg-white shadow rounded-xl px-14">
         <h1 className="text-center text-2xl fontLogo mt-8 mb-2">
@@ -26,7 +27,6 @@ function Login() {
         <div className="flex flex-row mt-7 gap-2 fontLoginn">
           <input className="w-full h-10 ps-2 border rounded-md text-sm" type="email" name="" id="" placeholder="Enter Email"  />
           <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="" id="" placeholder="Password" />
-          <FontAwesomeIcon icon="fa-brands fa-google" ></FontAwesomeIcon>
         </div>
         <div className="flex flex-row gap-2 mt-5 mb-5">
         <p className="text-sm fontLoginn">Don't have an account ?</p>
@@ -34,7 +34,7 @@ function Login() {
         </div>
       </div>
     </div>
-    
+    </>
   );
 }
 

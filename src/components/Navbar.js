@@ -9,7 +9,7 @@ function Header() {
   return (
 <div>
     {/* Header */}
-    <nav className="bg-white w-full shadow-transparent2 flex-col">
+    <nav className="bg-white fixed w-full shadow-transparent2 flex-col">
       <div className="flex flex-col md:flex-row">
         <div className={`flex justify-between items-center py-6 px-6 md:border-none ${isOpen ? 'border-b' : 'none'}`}>
             <div>
