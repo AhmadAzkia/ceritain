@@ -8,9 +8,9 @@ POST http://localhost:9000/user
 Content-Type: application/json
 
 {
-    "nama_user":"Aldi Taher",
-    "username": "dipangrh",
-    "password": "dipa12"
+    "nama_user":"Aldi Ganteng",
+    "username": "aldi",
+    "password": "aldi123"
 }
 
 
@@ -19,8 +19,8 @@ PATCH  http://localhost:9000/user/1
 Content-Type: application/json
 
 {
-    "nama_user":"Darwan Updated",
-    "username": "darwanxyz",
+    "nama_user":"Darwan",
+    "username": "darwannneee",
     "password": "darwan123"
 }
 

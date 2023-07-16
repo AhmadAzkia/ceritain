@@ -17,6 +17,7 @@ function Login() {
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
+        alert("Login Berhasil");
       })
       .catch((error) => {
         console.error(error.response.data);
