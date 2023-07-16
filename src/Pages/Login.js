@@ -44,10 +44,7 @@ function Login() {
               <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="password" id="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)}  />
             </div>
           </div>
-          <div className="flex flex-row">
-            <button className="my-5 text-sm fontLoginn">Having Trouble In Sign In ?</button>
-          </div>
-          <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75" type="submit">Sign In</button>
+          <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7" type="submit">Sign In</button>
           <div className="text-xs fontLoginn mt-4 text-center">- Or Sign with -</div>
             <div className="flex justify-center items-center mt-7 gap-2 fontLoginn">
               <i class="fa-brands fa-facebook text-2xl cursor-pointer"></i>
@@ -55,7 +52,7 @@ function Login() {
             </div>
           <div className="flex flex-row gap-2 mt-5 mb-5">
           <p className="text-sm fontLoginn">Don't have an account ?</p>
-          <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/')}>Create</button>
+          <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/')}>Sign Up</button>
           </div>
         </div>
       </div>
