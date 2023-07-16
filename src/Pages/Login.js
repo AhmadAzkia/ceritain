@@ -17,20 +17,20 @@ function Login() {
         <p className="text-center text-slate-700 fontLoginn text-sm">Hey, Enter your details to get sign in to your account</p>
         <div className="flex flex-col mt-7 gap-2 fontLoginn">
           <input className="w-full h-10 ps-2 border rounded-md text-sm" type="email" name="" id="" placeholder="Enter Email"  />
-          <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="" id="" placeholder="Password" />
+          <div className="text-right">
+            <button className="text-sm mt-2">Reset?</button>
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="" id="" placeholder="Password" />
+          </div>
         </div>
-        <div className="flex flex-row">
-          <button className="my-5 text-sm fontLoginn">Having Trouble In Sign In ?</button>
-        </div>
-        <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75" type="submit">Sign In</button>
+        <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-5" type="submit">Sign In</button>
         <div className="text-xs fontLoginn mt-4 text-center">- Or Sign with -</div>
-        <div className="flex flex-row mt-7 gap-2 fontLoginn">
-          <input className="w-full h-10 ps-2 border rounded-md text-sm" type="email" name="" id="" placeholder="Enter Email"  />
-          <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="" id="" placeholder="Password" />
+        <div className="flex justify-center items-center mt-7 gap-2 fontLoginn">
+          <i class="fa-brands fa-facebook text-2xl cursor-pointer"></i>
+          <i class="fa-brands fa-google text-2xl cursor-pointer"></i>
         </div>
         <div className="flex flex-row gap-2 mt-5 mb-5">
         <p className="text-sm fontLoginn">Don't have an account ?</p>
-        <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/')}>Create</button>
+        <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/')}>Sign Up</button>
         </div>
       </div>
     </div>
