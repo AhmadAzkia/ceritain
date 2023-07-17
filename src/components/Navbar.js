@@ -31,12 +31,12 @@ function Header() {
 
         <div className={`${isOpen ? 'block' : 'hidden'} md:flex flex-col md:flex-row justify-between w-full md:items-center border md:border-none mb-2 md:mb-0`}>
           <div className="flex flex-col md:flex-row mx-auto">
-            <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16">Janji Tatap Muka</a>
-            <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16">Testimoni</a>
-            <a href="#" className="text-black block px-6 py-2 fontNavbar md:text-1xl md:px-16">Tentang Kami</a>
+            <a href="#" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Janji Tatap Muka</a>
+            <a href="#" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Testimoni</a>
+            <a href="#" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Tentang Kami</a>
           </div>
           <div className="flex flex-col md:flex-row px-4 py-4">
-            <button className="bgWarna rounded-2xl w-36 md:h-9 md:w-36 fontNavbar text-lg hover:shadow-md mr-4" onClick={()=>navigate('/login')}>Login</button>
+            <button className="bgWarna  rounded-xl w-36 md:h-9 md:w-32 fontLoginn text-lg hover:shadow-md mr-4" onClick={()=>navigate('/login')}>Login</button>
           </div>
         </div>
       </div>  
