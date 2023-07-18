@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from "react";
 import '../css/font.css';
+import logo from "../components/img/google.png";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/home/Navbar";
 import axios from "axios";
@@ -51,7 +52,7 @@ function Login() {
           <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7" type="submit">Sign In</button>
           <div className="text-xs fontLoginn mt-4 text-center">- Or Sign with -</div>
             <div className="flex justify-center items-center mt-5 gap-2 fontLoginn">
-              <i class="fa-brands fa-google text-2xl cursor-pointer"></i><p className="text-sm fontLoginn">Google</p>
+              <img className="text-2xl w-6 cursor-pointer" src={logo} alt="" /><p className="text-sm fontLoginn">Google</p>
             </div>
           <div className="flex flex-row gap-2 mt-5 mb-5 pl-5">
           <p className="text-sm fontLoginn">Don't have an account?</p>

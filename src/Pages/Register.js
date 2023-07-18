@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from "react";
 import '../css/font.css';
+import logo from "../components/img/google.png";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/home/Navbar";
 import axios from "axios";
@@ -25,6 +26,10 @@ function Register() {
             <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Password" required  />
           </div>
           <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-10" type="submit">Sign Up</button>
+          <div className="text-xs fontLoginn mt-4 text-center">-- Or --</div>
+            <div className="flex justify-center items-center mt-5 gap-2 fontLoginn">
+              <img className="text-2xl w-6 cursor-pointer" src={logo} alt="" /><p className="text-sm fontLoginn">Google</p>
+            </div>
           <div className="flex flex-row gap-2 mt-5 mb-7 pl-5">
           <p className="text-sm fontLoginn">Already have an account?</p>
           <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/login')}>Log In</button>
