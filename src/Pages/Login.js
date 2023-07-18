@@ -31,7 +31,7 @@ function Login() {
     <Navbar />
     <form onSubmit={handleSubmitLogin}>
       <div className="w-full min-h-screen grid place-items-center bg-[#F6F8FD]">
-        <div className="w-96 bg-white shadow rounded-xl px-14">
+        <div className="w-96 bg-white shadow rounded-xl px-14 -mt-20">
           <h1 className="text-center text-2xl fontLogo mt-8 mb-2">
                   <span className="text-4xl">C</span>
                   ERITAIN
