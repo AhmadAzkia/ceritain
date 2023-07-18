@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import '../css/font.css';
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/home/Navbar";
 import axios from "axios";
 
 function Login() {
