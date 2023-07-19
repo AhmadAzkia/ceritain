@@ -7,11 +7,67 @@ import Navbar from "../components/home/Navbar";
 import axios from "axios";
 
 function Register() {
-  let navigate = useNavigate()
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirectToLogin, setRedirectToLogin] = useState(false);
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Jika username nya kurang dari 6 maka gagal
+    if (username.length < 6) {
+      alert("Username harus memiliki minimal 6 karakter");
+      return;
+    }
+
+    // Jika Password nya kurang dari 8 kasih notifikasi
+    if (password.length < 8) {
+      alert("Password harus memiliki minimal 8 karakter");
+      return;
+    }
+
+    axios
+      .post("http://localhost:9000/register", { name, username, password })
+      .then((response) => {
+        console.log(response.data);
+        // Lakukan tindakan yang diperlukan setelah berhasil registrasi
+        alert("Registrasi Berhasil");
+
+        // Jika berhasil Register setRedirect nya menjadi tRUE
+        setRedirectToLogin(true);
+      })
+      .catch((error) => {
+        console.error(error.response.data);
+        alert("Registrasi Gagal! Periksa kembali username atau password");
+      });
+  };
+
+  let navigate = useNavigate();
+
+  // Jika setRedirect nya true maka Langsung Navigate ke halaman Login
+  if (redirectToLogin) {
+      navigate('/login');
+      return null;
+  }
   return (
+    
     <>
     <Navbar />
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="w-full min-h-screen grid place-items-center bg-[#F6F8FD]">
         <div className="w-96 bg-white shadow rounded-xl px-14">
           <h1 className="text-center text-2xl fontLogo mt-8 mb-2">
@@ -21,11 +77,14 @@ function Register() {
           <p className="text-center text-slate-700 fontLoginn text-sm">Create your account now</p>
           <div className="flex flex-col mt-7 gap-2 fontLoginn">
             <p className="text-sm fontLoginn">Name*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="name" id="name" placeholder="Name" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="name" id="name"
+            value={name} onChange={handleNameChange} placeholder="Name" required  />
             <p className="text-sm fontLoginn">Username*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Username" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username"
+            value={username} onChange={handleUsernameChange} placeholder="Username" required  />
             <p className="text-sm fontLoginn">Password*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="Password" id="Password" placeholder="Password" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="Password"id="password"
+            value={password} onChange={handlePasswordChange}placeholder="Password" required  />
           </div>
           <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-10" type="submit">Sign Up</button>
           <div className="text-xs fontLoginn mt-4 text-center">-- Or --</div>
@@ -39,6 +98,8 @@ function Register() {
         </div>
       </div>
     </form>
+
+    {/* Jika Registrasi Berhasil maka langsung direct ke halaman Login */}
    </>
   );
 }
