@@ -10,23 +10,23 @@ function Jumbotron() {
 
         <div className="md:p-10">
           <div className="ml-1 mt-8">
-            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-5xl">
+            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-6xl fontJumbotron">
               Ceritain Selalu Ada
             </h1>
-            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-5xl">
+            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-6xl fontJumbotron">
               Untuk
             </h1>
-            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-5xl">
+            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-6xl fontJumbotron">
               Mendengarkan
             </h1>
-            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-5xl">
+            <h1 className="ml-5 text-3xl font-extrabold leading-none md:text-6xl fontJumbotron">
               Ceritamu
             </h1>
           </div>
 
             <div>
-              <p className="px-4 ml-3 mt-2 md:mt-4 md:ml-3 md:mb-0 sm:px-4 text-xs md:text-sm md:text-base">
-                Ceritain dibuat sebagai wadah untuk berkumpulkan orang yang membutuhkan seseorang <br /> untuk mendengarkan ceritanya. Pendengar yang berada di Ceritain semuanya adalah ahli di bidang psikologi!
+              <p className="px-4 ml-3 mt-2 md:mt-4 md:ml-3 md:mr-5 md:mb-0 sm:px-4 text-xs md:text-sm md:text-base fontJumbotron2">
+                Ceritain dibuat sebagai wadah untuk berkumpulkan orang yang membutuhkan seseorang untuk mendengarkan ceritanya. Pendengar yang berada di Ceritain semuanya adalah ahli di bidang psikologi!
               </p>
             </div>
           
@@ -42,8 +42,8 @@ function Jumbotron() {
           </div>
         </div>
 
-          <div className="">
-            <img className="" src={logo} alt="" />
+          <div className="mt-8">
+            <img className="md:max-w-3xl" src={logo} alt="" />
           </div>
       </div>
 
