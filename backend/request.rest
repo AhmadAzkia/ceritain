@@ -36,3 +36,13 @@ Content-Type: application/json
     "username": "dipangrh",
     "password": "dipa12"
 }
+###
+
+POST  http://localhost:9000/register
+Content-Type: application/json
+
+{   
+    "nama" : "Darwan",
+    "username": "dipangrh",
+    "password": "dipa12"
+}
