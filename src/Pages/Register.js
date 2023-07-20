@@ -41,7 +41,7 @@ function Register() {
     }
 
     axios
-      .post("http://localhost:9000/register", { name, username, password })
+      .post("https://api.darwan.me/register", { name, username, password })
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil registrasi

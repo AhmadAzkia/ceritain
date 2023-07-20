@@ -14,7 +14,7 @@ function Login() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:9000/login", { username, password })
+      .post("https://api.darwan.me/login", { username, password })
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
