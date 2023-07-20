@@ -29,7 +29,6 @@ function Jumbotron() {
                 Ceritain dibuat sebagai wadah untuk berkumpulkan orang yang membutuhkan seseorang untuk mendengarkan ceritanya. Pendengar yang berada di Ceritain semuanya adalah ahli di bidang psikologi!
               </p>
 
-              <p>Tes Erors</p>
             </div>
           
           
