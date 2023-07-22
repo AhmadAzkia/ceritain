@@ -44,18 +44,9 @@
 }
 
 .fontJumbotron {
-    font-family: 'Asap', sans-serif;
-    font-family: 'Dosis', sans-serif;
-    font-family: 'EB Garamond', serif;
-    font-family: 'Noto Sans Cypro Minoan', sans-serif;
     font-family: 'Oswald', sans-serif;
 }
 
-.fontJumbotron2 {
-    font-family: 'Asap', sans-serif;
-    font-family: 'Dosis', sans-serif;
-    font-family: 'EB Garamond', serif;
-    font-family: 'Itim', cursive;
-    font-family: 'Noto Sans Cypro Minoan', sans-serif;
-    font-family: 'Oswald', sans-serif;
+.fontJumbotronn {
+    font-family: 'Roboto', sans-serif;
 }

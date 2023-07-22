@@ -52,7 +52,13 @@ function Register() {
       })
       .catch((error) => {
         console.error(error.response.data);
-        alert("Registrasi Gagal! Periksa kembali username atau password");
+        if (error.response.status === 409 && error.response.data.msg === 'Username is already taken') {
+          // Jika status 409 (Conflict) dan pesan 'Username is already taken', tampilkan alert sesuai dengan respons API
+          alert('Username sudah ada. Coba gunakan username lain.');
+        } else {
+          // Jika ada kesalahan lain atau respon tidak terdefinisi, tampilkan pesan kesalahan umum
+          alert('Registrasi Gagal! Periksa kembali username atau password');
+        }
       });
   };
 
