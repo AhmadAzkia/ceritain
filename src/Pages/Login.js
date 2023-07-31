@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/home/Navbar";
 import axios from "axios";
 
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,11 +15,15 @@ function Login() {
     e.preventDefault();
 
     axios
-      .post("https://api.darwan.me/login", { username, password })
+      .post("http://localhost:9000/login", { username, password })
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
         alert("Login Berhasil");
+        navigate('/profile');
+
+        // Simpan status login (misalnya token) dalam localStorage
+        localStorage.setItem('token', response.data.token);
       })
       .catch((error) => {
         console.error(error.response.data);
@@ -27,6 +32,15 @@ function Login() {
   };
 
   let navigate = useNavigate()
+
+  // Cek apakah data sesi (misalnya token) ada dalam localStorage
+  const isLoggedIn = !!localStorage.getItem('token');
+
+  if (isLoggedIn) {
+    // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
+    navigate('/profile');
+    return null;
+  }
   return (
     <>
     <Navbar />

@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import { render } from "react-dom";
 import Doctor from './Pages/Doctor';
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/doctor' element={<Doctor />}/>
+        <Route path='/profile' element={<Profile />}/>
       </Routes>
     </Router>
   );
