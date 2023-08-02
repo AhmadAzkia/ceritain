@@ -1,10 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../../App.css';
 import '../../css/font.css';
 import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false)
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Cek apakah token ada di localStorage, jika ada, berarti session aktif
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const handleButtonClick = () => {
+    if (isLoggedIn) {
+      // Jika session aktif, arahkan ke halaman profil
+      navigate('/profile');
+      localStorage.removeItem("token")
+    } else {
+      // Jika belum login, arahkan ke halaman login
+      navigate('/login');
+    }
+  };
+
   let navigate = useNavigate()
   return (
 <div>
@@ -36,7 +56,7 @@ function Header() {
             <a href="" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Tentang Kami</a>
           </div>
           <div className="flex flex-col md:flex-row px-4 py-4">
-            <button className="bgWarna text-white rounded-xl w-36 md:h-9 md:w-32 fontLoginn text-lg hover:shadow-md mr-4" onClick={()=>navigate('/login')}>Login</button>
+            <button className={`bgWarna text-white rounded-xl w-36 md:h-9 md:w-32 fontLoginn text-lg hover:shadow-md mr-4`} onClick={handleButtonClick}>{isLoggedIn ? 'Logout' : 'Login'}</button>
           </div>
         </div>
       </div>  
