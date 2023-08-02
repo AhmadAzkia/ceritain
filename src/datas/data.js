@@ -4,6 +4,14 @@ import eyes from "../components/img/eavesdropping.png";
 import clock from "../components/img/clock.png";
 import database from "../components/img/database-storage.png"
 
+// Import Image FeebackPeople
+import darwan from "../components/img/darwan.jpg";
+import azki from "../components/img/azki.jpg";
+import aldi from "../components/img/aldi.jpg";
+import dipa from "../components/img/dipa.jpg"
+
+
+// Halaman About Us
 const aboutUsText = {
     title: "Kenapa harus pilih Ceritain?",
     description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
@@ -31,6 +39,34 @@ const aboutUsText = {
       // Add more reasons as needed
     ],
   };
+
+  //
+  const FeedbackPeople = {
+    title: "Apa Kata Orang ?",
+    description: "Beberapa review dari orang-orang yang pernah menggunakan Ceritain.",
+    reasons: [
+        {
+            nama: "Azkia",
+            description: '"Ceritain adalah platfrom \n terkeren yang pernah  \n saya temukan"',
+            image: azki
+        },
+        {
+            nama: "Darwan",
+            description: '"Aku menjadi lebih \n percaya diri lagi \n setelah aku mengenal \n ceritain. "',
+            image: darwan
+        },
+        {
+            nama: "Dipa",
+            description: '"Pelayanan yang ada \n di ceritain sangat \n super cepat sekali."',
+            image: dipa
+        },
+        {
+            nama: "Aldi",
+            description: '"Aku sangat suka \n pendengar yang ada \n di ceritain karena \n mereka semuanya ramah."',
+            image: aldi
+        }
+    ]
+  }
   
-  export default aboutUsText;
+  export {aboutUsText, FeedbackPeople};
   
