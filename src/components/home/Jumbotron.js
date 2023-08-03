@@ -24,11 +24,8 @@ function Jumbotron() {
               <p className="px-4 ml-3 mt-2 md:mt-4 md:ml-3 md:mr-5 md:mb-0 sm:px-4 text-xs/loose md:text-sm/loose fontLoginn">
                 Ceritain dibuat sebagai wadah untuk berkumpulkan orang yang membutuhkan seseorang untuk mendengarkan ceritanya. Pendengar yang berada di Ceritain semuanya adalah ahli di bidang psikologi!
               </p>
-
             </div>
           
-          
-
           <div className="ml-2 mt-6 md:ml-0">
               <button class="inline-flex justify-center items-center mx-5 py-3 px-4 text-xs text-center text-white rounded-lg bg-[#5A96E3] hover:bg-blue-800 md:ml-7 md:text-sm fontLoginn" onClick={()=>navigate('/doctor')}>
                 Buat Janji Temu Sekarang

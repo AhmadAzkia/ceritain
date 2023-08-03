@@ -4,8 +4,13 @@ import '../../css/font.css';
 
 function Footer() {
   return (
-   <>
-   </>
+   <div className="border rounded-lg text-center h-24 flex items-center justify-center shadow-inner">
+      <a href="/" className="text-2xl fontLogo">
+        {/* Span untuk membuat huruf C jadi lebih besar */}
+        <span className="text-4xl">C</span>
+        ERITAIN
+      </a>
+   </div>
   );
 }
 

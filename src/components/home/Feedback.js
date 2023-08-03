@@ -11,7 +11,7 @@ function Feedback() {
         <small>{FeedbackPeople.description}</small>
       </div>
 
-      <div className="flex overflow-x-auto whitespace-nowrap fontLoginn mb-5 md:justify-center">
+      <div className="flex overflow-x-auto whitespace-nowrap fontLoginn mb-1 md:justify-center">
         {FeedbackPeople.reasons.map((reason, index) => (
           <div className="mt-5 text-center mx-8" key={index}>
             <img src={reason.image} alt="" className="h-16 w-16 md:h-20 rounded-full md:w-20 mx-auto"/>

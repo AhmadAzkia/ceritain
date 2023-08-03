@@ -33,7 +33,7 @@ function Header() {
       <div className="flex flex-col md:flex-row">
         <div className={`flex justify-between items-center py-6 px-6 md:border-none ${isOpen ? 'border-b' : 'none'}`}>
             <div>
-              <a href="/" className="text-2xl md:text-2xl fontLogo ml-4">
+              <a href="/" className="text-2xl fontLogo ml-4">
                 {/* Span untuk membuat huruf C jadi lebih besar */}
                 <span className="text-4xl">C</span>
                 ERITAIN
