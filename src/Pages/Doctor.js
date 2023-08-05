@@ -20,7 +20,7 @@ function Doctor() {
   // Mengambil Data Dokter
   const fetchDokter = async() => {
     try {
-      const response = await fetch('http://localhost:9000/api/listDokter'); // Ganti dengan endpoint URL sesuai dengan backend Anda
+      const response = await fetch('https://api.darwan.me/api/listDokter'); // Ganti dengan endpoint URL sesuai dengan backend Anda
       const data = await response.json();
       setDokter(data);
     } catch (error) {
