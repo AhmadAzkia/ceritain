@@ -3,6 +3,9 @@ import bcryptjs from "bcryptjs";
 import {AZURE_CONTAINER_NAME, AZURE_STORAGE_CONNECTION_STRING} from "../config/storage.js";
 import { BlobServiceClient } from "@azure/storage-blob";
 
+const blobServiceClient = BlobServiceClient.fromConnectionString(AZURE_STORAGE_CONNECTION_STRING);
+const containerClient = blobServiceClient.getContainerClient(AZURE_CONTAINER_NAME);
+
 export const getPsikolog = async(req, res) => {
     try{
         const response = await Psikolog.findAll();
@@ -13,7 +16,7 @@ export const getPsikolog = async(req, res) => {
 }
 
 export const registerPsikologi = async (req, res) => {
-    const { name, username, password, spesialisasi, deskripsi, nomerTelepon, kota, image } = req.body;
+    const { name, username, password, spesialisasi, deskripsi, nomerTelepon, kota } = req.body;
   
     try {
       
@@ -32,20 +35,19 @@ export const registerPsikologi = async (req, res) => {
 
       let imageUrl = null;
 
-      if (image) {
-        // Upload the image to Azure Blob Storage
-        const blobServiceClient = BlobServiceClient.fromConnectionString(
-        AZURE_STORAGE_CONNECTION_STRING
-      );
-      const containerClient = blobServiceClient.getContainerClient(AZURE_CONTAINER_NAME);
+     // Check if file was uploaded
+    if (!req.file) {
+      return res.status(400).json({ error: 'Please upload a photo.' });
+    }
 
-      const imageBuffer = Buffer.from(image, 'base64');
-      const imageName = `profile${username}.jpg` + ''; // Generate a random filename
-      const blockBlobClient = containerClient.getBlockBlobClient(imageName);
-      await blockBlobClient.uploadData(imageBuffer);
+      // Upload the photo to Azure Blob Storage
+      const blobName = `${Date.now()}-${req.file.originalname}`;
+      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+      await blockBlobClient.uploadData(req.file.buffer, req.file.buffer.length);
+
 
       imageUrl = blockBlobClient.url;
-    }
+
       // Create user with hashed password
       await Psikolog.create({
         nama_psikolog: name,

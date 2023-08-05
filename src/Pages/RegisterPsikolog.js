@@ -47,14 +47,7 @@ function RegisterPsikolog() {
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    setImage(e.target.files[0])
   };
 
 
@@ -72,9 +65,19 @@ function RegisterPsikolog() {
       alert("Password harus memiliki minimal 8 karakter");
       return;
     }
+
+    const formData = new FormData();
+      formData.append('name', name);
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('spesialisasi', spesialisasi);
+      formData.append('deskripsi', deksripsi);
+      formData.append('nomerTelepon', nomerTelepon);
+      formData.append('kota', kota);
+      formData.append('image', image);
     
     axios
-      .post("http://localhost:9000/api/psikolog/createPsikolog", { name, username, password, spesialisasi, deksripsi, nomerTelepon, kota, image })
+      .post("http://localhost:9000/api/psikolog/createPsikolog", formData)
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil registrasi
