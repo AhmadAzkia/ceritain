@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from "react";
-import '../css/font.css';
-import logo from "../components/img/google.png";
+import '../../css/font.css';
+import logo from "../../components/img/google.png";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/home/Navbar";
+import Navbar from "../../components/home/Navbar";
 import axios from "axios";
 
 function RegisterPsikolog() {

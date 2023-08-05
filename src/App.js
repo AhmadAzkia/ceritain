@@ -4,10 +4,9 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import { render } from "react-dom";
-import Psikolog from './Pages/Psikolog';
+import Psikolog from './Pages/Psikolog/Psikolog';
 import Profile from "./Pages/Profile";
-import Upload from "./Pages/upload";
-import RegisterPsikolog from './Pages/RegisterPsikolog';
+import RegisterPsikolog from './Pages/Psikolog/RegisterPsikolog';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/psikolog' element={<Psikolog />}/>
         <Route path='/profile' element={<Profile />}/>
-        <Route path='/upload' element={<Upload />}/>
         <Route path='/psikolog/admin/register' element={<RegisterPsikolog />}/>
       </Routes>
     </Router>

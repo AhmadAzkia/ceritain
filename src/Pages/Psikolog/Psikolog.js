@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import '../App.css'
-import '../css/font.css';
-import Navbar from "../components/home/Navbar";
-import Footer from "../components/home/Footer";
-import Darwan from "../components/img/darwan.jpg";
+import '../../App.css'
+import '../../css/font.css';
+import Navbar from "../../components/home/Navbar";
+import Footer from "../../components/home/Footer";
 
 // Import Image
-import ImgSearch from "../components/img/doctor/search.png"
-import ImgClock from "../components/img/doctor/clock.png"
-import ImgLocation from "../components/img/doctor/location.png";
+import ImgSearch from "../../components/img/doctor/search.png"
+import ImgClock from "../../components/img/doctor/clock.png"
+import ImgLocation from "../../components/img/doctor/location.png";
 
 function Psikolog() {
   const [Psikolog, setPsikolog] = useState([]);
