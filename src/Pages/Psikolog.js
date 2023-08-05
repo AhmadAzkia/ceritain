@@ -10,19 +10,19 @@ import ImgSearch from "../components/img/doctor/search.png"
 import ImgClock from "../components/img/doctor/clock.png"
 import ImgLocation from "../components/img/doctor/location.png";
 
-function Doctor() {
-  const [dokter, setDokter] = useState([]);
+function Psikolog() {
+  const [Psikolog, setPsikolog] = useState([]);
 
   useEffect(() => {
-    fetchDokter();
+    fetchPsikolog();
   }, []);
 
   // Mengambil Data Dokter
-  const fetchDokter = async() => {
+  const fetchPsikolog = async() => {
     try {
-      const response = await fetch('https://api.darwan.me/api/listPsikolog'); // Ganti dengan endpoint URL sesuai dengan backend Anda
+      const response = await fetch('http://localhost:9000/api/listPsikolog'); // Ganti dengan endpoint URL sesuai dengan backend Anda
       const data = await response.json();
-      setDokter(data);
+      setPsikolog(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -40,13 +40,13 @@ function Doctor() {
       </div>
 
       <div className="baris mt-8 grid md:grid-cols-3 grid-cols-1 gap-16 px-10">
-        {dokter.map((listDokter) => (
+        {Psikolog.map((listPsikolog) => (
           <div className="kol border text-center bg-white shadow-md p-14">
-          <img src={Darwan} className="w-24 h-24 mx-auto rounded-full"/>
-          <h1 className="text-2xl mt-3 fontLoginn">{listDokter.Nama_Dokter}</h1>
-          <small className="text-slate-500">{listDokter.Spesialisasi}</small>
+          <img src={listPsikolog.imageurl} className="w-24 h-24 mx-auto rounded-full"/>
+          <h1 className="text-2xl mt-3 fontLoginn">{listPsikolog.nama_psikolog}</h1>
+          <small className="text-slate-500">{listPsikolog.spesialisasi}</small>
           <p className="mb-1 mt-5 fontDeskripsi text-sm/loose">
-            {listDokter.Deskripsi}
+            {listPsikolog.deskripsi}
           </p>
 
           {/* Clock */}
@@ -61,7 +61,7 @@ function Doctor() {
           <div className="flex justify-center items-center mt-3">
             <img src={ImgLocation} className="w-4 h-4" /> 
             <p className="text-xs ml-2 font-bold">
-              {listDokter.Alamat}
+              {}
             </p>
           </div>
 
@@ -78,4 +78,4 @@ function Doctor() {
   );
 }
 
-export default Doctor;
+export default Psikolog;

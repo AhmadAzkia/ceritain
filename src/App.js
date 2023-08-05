@@ -7,7 +7,7 @@ import { render } from "react-dom";
 import Psikolog from './Pages/Psikolog';
 import Profile from "./Pages/Profile";
 import Upload from "./Pages/upload";
-import RegisterDokter from './Pages/RegisterDokter';
+import RegisterPsikolog from './Pages/RegisterPsikolog';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path='/psikolog' element={<Psikolog />}/>
         <Route path='/profile' element={<Profile />}/>
         <Route path='/upload' element={<Upload />}/>
-        <Route path='/dokter/register' element={<Upload />}/>
+        <Route path='/psikolog/admin/register' element={<RegisterPsikolog />}/>
       </Routes>
     </Router>
   );
