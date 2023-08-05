@@ -77,7 +77,7 @@ function RegisterPsikolog() {
       formData.append('image', image);
     
     axios
-      .post("http://localhost:9000/api/psikolog/createPsikolog", formData)
+      .post("https://api.darwan.me/api/psikolog/createPsikolog", formData)
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil registrasi

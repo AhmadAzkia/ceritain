@@ -20,7 +20,7 @@ function Psikolog() {
   // Mengambil Data Dokter
   const fetchPsikolog = async() => {
     try {
-      const response = await fetch('http://localhost:9000/api/listPsikolog'); // Ganti dengan endpoint URL sesuai dengan backend Anda
+      const response = await fetch('https://api.darwan.me/api/listPsikolog'); // Ganti dengan endpoint URL sesuai dengan backend Anda
       const data = await response.json();
       setPsikolog(data);
     } catch (error) {
