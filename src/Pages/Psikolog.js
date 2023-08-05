@@ -61,7 +61,7 @@ function Psikolog() {
           <div className="flex justify-center items-center mt-3">
             <img src={ImgLocation} className="w-4 h-4" /> 
             <p className="text-xs ml-2 font-bold">
-              {}
+            {listPsikolog.kota}
             </p>
           </div>
 
