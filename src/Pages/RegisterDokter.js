@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/home/Navbar";
 import axios from "axios";
 
-function Register() {
+function RegisterDokter() {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -123,4 +123,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterDokter;

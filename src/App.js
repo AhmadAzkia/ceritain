@@ -4,8 +4,10 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import { render } from "react-dom";
-import Doctor from './Pages/Doctor';
+import Psikolog from './Pages/Psikolog';
 import Profile from "./Pages/Profile";
+import Upload from "./Pages/upload";
+import RegisterDokter from './Pages/RegisterDokter';
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/doctor' element={<Doctor />}/>
+        <Route path='/psikolog' element={<Psikolog />}/>
         <Route path='/profile' element={<Profile />}/>
+        <Route path='/upload' element={<Upload />}/>
+        <Route path='/dokter/register' element={<Upload />}/>
       </Routes>
     </Router>
   );

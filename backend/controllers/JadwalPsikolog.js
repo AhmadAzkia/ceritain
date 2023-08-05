@@ -1,7 +1,6 @@
-import JadwalDokter from "../models/JadwalDokter_model.js"
-import bcryptjs from "bcryptjs";
+import JadwalDokter from "../models/JadwalPsikolog_model.js"
 
-export const getJadwalDokter = async(req, res) => {
+export const getJadwalPsikolog = async(req, res) => {
     try{
         const response = await JadwalDokter.findAll();
         res.status(200).json(response);

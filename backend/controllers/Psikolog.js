@@ -1,7 +1,7 @@
-import Dokter from "../models/Dokter_Model.js"
+import Dokter from "../models/Psikolog_Model.js"
 import bcryptjs from "bcryptjs";
 
-export const getDokter = async(req, res) => {
+export const getPsikolog = async(req, res) => {
     try{
         const response = await Dokter.findAll();
         res.status(200).json(response);
