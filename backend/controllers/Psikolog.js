@@ -47,7 +47,7 @@ export const loginPsikolog = async (req, res) => {
 
 // Register Psikolog
 export const registerPsikologi = async (req, res) => {
-    const { name, username, password, spesialisasi, deskripsi, nomerTelepon, kota } = req.body;
+    const { name, username, password, spesialisasi, deskripsi, gender, nomerTelepon, kota } = req.body;
   
     try {
     // Cek apakah username sudah ada dalam database
@@ -85,9 +85,11 @@ export const registerPsikologi = async (req, res) => {
         password_psikolog: hashedPassword,
         spesialisasi: spesialisasi,
         deskripsi: deskripsi,
+        gender: gender,
         notelepon: nomerTelepon,
         kota: kota,
-        imageurl: imageUrl
+        imageurl: imageUrl,
+        status: 'Available'
       });
   
       res.status(201).json({ msg: "User Created!" });

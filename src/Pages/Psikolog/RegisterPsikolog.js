@@ -12,6 +12,7 @@ function RegisterPsikolog() {
   const [password, setPassword] = useState("");
   const [spesialisasi, setSpesialisasi] = useState("");
   const [deksripsi, setDeskripsi] = useState("");
+  const [gender, setGender] = useState("");
   const [nomerTelepon, setNomerTelepon] = useState("");
   const [kota, setKota] = useState("");
 
@@ -32,6 +33,10 @@ function RegisterPsikolog() {
 
   const handleSpesialisasiChange = (e) => {
     setSpesialisasi(e.target.value);
+  };
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
   };
 
   const handleDeskripsiChange = (e) => {
@@ -72,6 +77,7 @@ function RegisterPsikolog() {
       formData.append('password', password);
       formData.append('spesialisasi', spesialisasi);
       formData.append('deskripsi', deksripsi);
+      formData.append('gender', gender);
       formData.append('nomerTelepon', nomerTelepon);
       formData.append('kota', kota);
       formData.append('image', image);
@@ -141,6 +147,13 @@ function RegisterPsikolog() {
             {/* Deksripsi Diri anda */}
             <p className="text-sm fontLoginn">Deskripsi*</p>
             <textarea className="w-full h-20 ps-2 border rounded-md text-sm text-center justify-center" type="text" name="deskripsi" id="deskripsi" value={deksripsi} onChange={handleDeskripsiChange} placeholder="Deskripsi Diri Anda" required  />
+
+            {/* Gender */}
+            <p className="text-sm fontLoginn">Gender*</p>
+            <select id="gender" name="gender" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleGenderChange} value={gender}>
+              <option value="Percintaan">Pria</option>
+              <option value="Keluarga">Wanita</option>
+            </select>
 
             {/* Nomer Telepon */}
             <p className="text-sm fontLoginn">Nomer Telepon*</p>
