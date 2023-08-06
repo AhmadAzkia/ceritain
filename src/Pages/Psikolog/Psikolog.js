@@ -41,15 +41,22 @@ function Psikolog() {
       <div className="baris mt-8 grid md:grid-cols-3 grid-cols-1 gap-6 md:gap-16 px-4 md:px-10">
         {Psikolog.map((listPsikolog) => (
           <div key={listPsikolog.id} className="kol border text-center bg-white shadow-md p-8 md:p-14 rounded-lg flex flex-col">
-            <img src={listPsikolog.imageurl} className="w-24 h-24 mx-auto rounded-full" alt={listPsikolog.nama_psikolog} />
+            <div className="relative">
+              <img src={listPsikolog.imageurl} className="w-24 h-24 mx-auto rounded-full" alt="" />
+
+              <div className={`absolute top-0 right-0 text-white rounded-full p-1 ${listPsikolog.status === 'Available' ? 'bg-[#5A96E3]' : 'bg-red-500'}`}>
+                <img src={ImgClock} className="w-4 h-4" alt="Clock" />
+              </div>
+            </div>
             <h1 className="text-xl mt-3 font-semibold">{listPsikolog.nama_psikolog}</h1>
             <small className="text-slate-500 block">{listPsikolog.spesialisasi}</small>
             <p className="mb-4 mt-5 text-gray-600 text-sm flex-grow">{listPsikolog.deskripsi}</p>
 
             {/* Clock */}
             <div className="flex justify-center items-center">
-              <img src={ImgClock} className="w-4 h-4" alt="Clock" />
-              <p className="text-xs ml-2">Available: 16 PM - 12 PM</p>
+              <p className="text-xs ml-2">
+                <span className="font-bold">{listPsikolog.status}</span>
+                : 16 PM - 12 PM</p>
             </div>
 
             {/* Location */}

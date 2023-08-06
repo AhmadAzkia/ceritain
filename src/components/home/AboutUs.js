@@ -7,7 +7,7 @@ function AboutUs() {
   return (
     <div>
       <div className="px-16 mt-10">
-        <h1 className="font-medium text-2xl fontLoginn md:text-3xl">{aboutUsText.title}</h1>
+        <h1 className="font-bold text-2xl fontLoginn md:text-3xl">{aboutUsText.title}</h1>
         <small className="text-xs">{aboutUsText.description}</small>
       </div>
 
