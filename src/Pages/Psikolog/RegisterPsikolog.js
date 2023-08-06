@@ -140,7 +140,8 @@ function RegisterPsikolog() {
             {/* Spesialis Psikologi */}
             <p className="text-sm fontLoginn">Spesialisasi*</p>
             <select id="spesialisasi" name="spesialisasi" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleSpesialisasiChange} value={spesialisasi}>
-              <option value="Percintaan" selected>Percintaan</option>
+            <option value="" selected disabled>Pilih Spesialisasi</option>
+              <option value="Percintaan">Percintaan</option>
               <option value="Keluarga">Keluarga</option>
             </select>
 
@@ -151,7 +152,8 @@ function RegisterPsikolog() {
             {/* Gender */}
             <p className="text-sm fontLoginn">Gender*</p>
             <select id="gender" name="gender" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleGenderChange} value={gender}>
-              <option value="Pria" selected>Pria</option>
+              <option value="" selected disabled>Pilih Gender</option>
+              <option value="Pria">Pria</option>
               <option value="Wanita">Wanita</option>
             </select>
 
