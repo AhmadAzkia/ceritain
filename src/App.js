@@ -11,6 +11,7 @@ import Psikolog from './Pages/Psikolog/Psikolog';
 import RegisterPsikolog from './Pages/Psikolog/RegisterPsikolog';
 import LoginPsikolog from './Pages/Psikolog/LoginPsikolog';
 import ProfilePsikolog from './Pages/Psikolog/ProfilePsikolog';
+import DetailsPsikolog from './Pages/Psikolog/DetailsPsikolog';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         {/* Psikolog */}
         <Route path='/psikolog' element={<Psikolog />}/>
         <Route path='/psikolog/profile' element={<ProfilePsikolog />}/>
+        <Route path='/psikolog/detailspsikolog/:id' element={<DetailsPsikolog />}/>
         <Route path='/psikolog/admin/register' element={<RegisterPsikolog />}/>
         <Route path='/psikolog/admin/login' element={<LoginPsikolog />}/>
       </Routes>

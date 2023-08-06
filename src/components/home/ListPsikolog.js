@@ -3,6 +3,7 @@ import '../../App.css';
 import '../../css/font.css';
 import ImgClock from "../../components/img/doctor/clock.png"
 import ImgLocation from "../../components/img/doctor/location.png";
+import { useNavigate } from "react-router-dom";
 
 function ListPsikolog() {
   const [Psikolog, setPsikolog] = useState([]);
@@ -21,9 +22,12 @@ function ListPsikolog() {
       console.log(error.message);
     }
   }
+
+
+  const navigate = useNavigate();
   return (
 
-    <div className="mt-8 ml-16 bg-[#5A96E3] md:flex">
+    <div className="mt-8 ml-6 bg-[#5A96E3] md:flex md:ml-16">
         <div className="pl-10 pt-10 mr-2 md:w-96">
             <h1 className="fontLoginn text-white font-medium text-3xl md:text-4xl">Beberapa Psikolog yang berada di Ceritain.</h1>
             <small className="fontDeskripsi block mt-2 text-white text-sm/loose md:pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis convallis laoreet rhoncus. Integer mattis, ex sed dapibus fringilla, leo ligula consequat velit. </small>
@@ -61,7 +65,7 @@ function ListPsikolog() {
                     </div>
 
                     <div className="flex justify-center">
-                        <button className={`px-6 py-2 bg-[#5A96E3] rounded-lg text-white font-semibold  focus:outline-none focus:bg-blue-700 ${listPsikolog.status === 'Available' ? 'hover:bg-blue-700' : 'hover:bg-red-700'}`} type="submit">Buat Janji Sekarang</button>
+                        <button className={`px-6 py-2 bg-[#5A96E3] rounded-lg text-white font-semibold  focus:outline-none focus:bg-blue-700 ${listPsikolog.status === 'Available' ? 'hover:bg-blue-700' : 'hover:bg-red-700'}`} type="submit"  onClick={()=>navigate(`/psikolog/detailsPsikolog/${listPsikolog.id_psikolog}`)}>Buat Janji Sekarang</button>
                     </div>
                 </div>
                  ))}

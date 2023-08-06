@@ -15,7 +15,7 @@ function Feedback() {
         {FeedbackPeople.reasons.map((reason, index) => (
           <div className="mt-5 text-center mx-8" key={index}>
             <img src={reason.image} alt="" className="h-16 w-16 md:h-20 rounded-full md:w-20 mx-auto"/>
-            <h1 className="mt-3 text-xs text-slate-500" dangerouslySetInnerHTML={{ __html: reason.description.replace(/\n/g, '<br/>') }} />
+            <h1 className="mt-3 text-xs/relaxed text-slate-500 fontDeskripsi" dangerouslySetInnerHTML={{ __html: reason.description.replace(/\n/g, '<br/>') }} />
             <h3 className="font-medium mt-1 text-base md:text-lg">{reason.nama}</h3>
           </div>
         ))}
