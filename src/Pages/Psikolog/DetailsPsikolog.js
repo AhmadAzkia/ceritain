@@ -19,6 +19,20 @@ function DetailsPsikolog() {
     setSelectedJam(jam);
   };
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+  });
+
   // Mengambil Data Psikolog
   const fetchPsikolog = async () => {
     try {
@@ -52,7 +66,7 @@ function DetailsPsikolog() {
         <div className="flex flex-col items-center mt-14 lg:flex-row md:justify-between">
           <div className="text-center lg:w-1/2 lg:mr-10">
             <h1 className="text-2xl font-bold mb-4 fontLoginn md:text-4xl">{Psikolog.nama_psikolog}</h1>
-            <small className="text-slate-500 block md:text-lg">{Psikolog.spesialisasi}</small>
+            <small className="text-slate-500 mb-6 block md:text-lg">{Psikolog.spesialisasi}</small>
 
             <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mt-4 md:w-52 md:h-52">
                 <img src={Psikolog.imageurl} className="w-full h-full object-cover" alt="" />
@@ -78,18 +92,18 @@ function DetailsPsikolog() {
           <div className="mt-6 lg:w-1/2 md:mr-16">
             <h2 className="text-lg font-semibold mb-2">Jadwal Praktik Psikolog</h2>
             <div className="grid grid-cols-3 gap-4">
-              {jadwalPraktekSementara.map((jadwal) => (
+            {jadwalPraktekSementara.map((jadwal) => (
                 <button
-                  key={jadwal.id}
-                  className={`${
-                    selectedJam === jadwal.jam ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
-                  }`}
-                  onClick={() => handleSelectJam(jadwal.jam)}
-                  disabled={!jadwal.available}
-                >
-                  {jadwal.jam}
-                </button>
-              ))}
+                key={jadwal.id}
+                className={`w-24 h-10 m-2 rounded-lg ${
+                  selectedJam === jadwal.jam ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
+                } ${!jadwal.available && 'cursor-not-allowed opacity-50'}`}
+                onClick={() => handleSelectJam(jadwal.jam)}
+                disabled={!jadwal.available}
+              >
+                {jadwal.jam}
+              </button>
+            ))}
             </div>
           </div>
         </div>
