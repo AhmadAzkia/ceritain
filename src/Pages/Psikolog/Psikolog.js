@@ -38,37 +38,30 @@ function Psikolog() {
         <img src={ImgSearch} className="w-10 h-10 mr-10"/>
       </div>
 
-      <div className="baris mt-8 grid md:grid-cols-3 grid-cols-1 gap-16 px-10">
+      <div className="baris mt-8 grid md:grid-cols-3 grid-cols-1 gap-6 md:gap-16 px-4 md:px-10">
         {Psikolog.map((listPsikolog) => (
-          <div className="kol border text-center bg-white shadow-md p-14">
-          <img src={listPsikolog.imageurl} className="w-24 h-24 mx-auto rounded-full"/>
-          <h1 className="text-2xl mt-3 fontLoginn">{listPsikolog.nama_psikolog}</h1>
-          <small className="text-slate-500">{listPsikolog.spesialisasi}</small>
-          <p className="mb-1 mt-5 fontDeskripsi text-sm/loose">
-            {listPsikolog.deskripsi}
-          </p>
+          <div key={listPsikolog.id} className="kol border text-center bg-white shadow-md p-8 md:p-14 rounded-lg flex flex-col">
+            <img src={listPsikolog.imageurl} className="w-24 h-24 mx-auto rounded-full" alt={listPsikolog.nama_psikolog} />
+            <h1 className="text-xl mt-3 font-semibold">{listPsikolog.nama_psikolog}</h1>
+            <small className="text-slate-500 block">{listPsikolog.spesialisasi}</small>
+            <p className="mb-4 mt-5 text-gray-600 text-sm flex-grow">{listPsikolog.deskripsi}</p>
 
-          {/* Clock */}
-          <div className="flex justify-center items-center mt-4">
-            <img src={ImgClock} className="w-4 h-4" /> 
-            <p className="text-xs ml-2">
-              16 PM - 12 PM
-            </p>
+            {/* Clock */}
+            <div className="flex justify-center items-center">
+              <img src={ImgClock} className="w-4 h-4" alt="Clock" />
+              <p className="text-xs ml-2">Available: 16 PM - 12 PM</p>
+            </div>
+
+            {/* Location */}
+            <div className="flex justify-center items-center mt-2">
+              <img src={ImgLocation} className="w-4 h-4" alt="Location" />
+              <p className="text-xs ml-2 font-bold">{listPsikolog.kota}</p>
+            </div>
+
+            <button className="px-6 py-2 mt-6 bg-[#5A96E3] rounded-lg text-white font-semibold hover:bg-blue-700 focus:outline-none focus:bg-blue-700" type="submit">Buat Janji Sekarang</button>
           </div>
-
-          {/* Location */}
-          <div className="flex justify-center items-center mt-3">
-            <img src={ImgLocation} className="w-4 h-4" /> 
-            <p className="text-xs ml-2 font-bold">
-            {listPsikolog.kota}
-            </p>
-          </div>
-
-          <button className="px-7 py-2 bg-[#5A96E3] rounded-lg text-white mt-6 fontDeskripsi" type="submit">Buat Janji Sekarang</button>
-        </div>
         ))}
       </div>
-
     </div>
 
     <Footer />
