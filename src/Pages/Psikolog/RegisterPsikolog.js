@@ -140,7 +140,7 @@ function RegisterPsikolog() {
             {/* Spesialis Psikologi */}
             <p className="text-sm fontLoginn">Spesialisasi*</p>
             <select id="spesialisasi" name="spesialisasi" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleSpesialisasiChange} value={spesialisasi}>
-              <option value="Percintaan">Percintaan</option>
+              <option value="Percintaan" selected>Percintaan</option>
               <option value="Keluarga">Keluarga</option>
             </select>
 
@@ -151,17 +151,17 @@ function RegisterPsikolog() {
             {/* Gender */}
             <p className="text-sm fontLoginn">Gender*</p>
             <select id="gender" name="gender" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleGenderChange} value={gender}>
-              <option value="Percintaan">Pria</option>
-              <option value="Keluarga">Wanita</option>
+              <option value="Pria" selected>Pria</option>
+              <option value="Wanita">Wanita</option>
             </select>
 
             {/* Nomer Telepon */}
             <p className="text-sm fontLoginn">Nomer Telepon*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="nomertelepon"id="nomertelepon" value={nomerTelepon} onChange={handleNomerTelepon}placeholder="Password" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="nomertelepon"id="nomertelepon" value={nomerTelepon} onChange={handleNomerTelepon}placeholder="Nomer Telpon" required  />
 
             {/* Kota */}
             <p className="text-sm fontLoginn">Kota*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="kota"id="kota" value={kota} onChange={handleKotaChange}placeholder="Password" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="kota"id="kota" value={kota} onChange={handleKotaChange} placeholder="Kota" required  />
 
             {/* Poto Profile */}
             <p className="text-sm fontLoginn">Poto Profile*</p>
