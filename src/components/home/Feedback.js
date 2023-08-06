@@ -6,7 +6,7 @@ import { FeedbackPeople } from "../../datas/data"
 function Feedback() {
   return (
     <div>
-      <div className="text-center mt-16 fontLoginn">
+      <div className="text-center mt-16 fontLoginn" id="feedback">
         <h1 className="text-2xl font-bold mb-2 md:text-3xl">{FeedbackPeople.title}</h1>
         <small className="fontDeskripsi text-sm/loose">{FeedbackPeople.description}</small>
       </div>
