@@ -12,6 +12,7 @@ function RegisterPsikolog() {
   const [password, setPassword] = useState("");
   const [spesialisasi, setSpesialisasi] = useState("");
   const [deksripsi, setDeskripsi] = useState("");
+  const [gender, setGender] = useState("");
   const [nomerTelepon, setNomerTelepon] = useState("");
   const [kota, setKota] = useState("");
 
@@ -32,6 +33,10 @@ function RegisterPsikolog() {
 
   const handleSpesialisasiChange = (e) => {
     setSpesialisasi(e.target.value);
+  };
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
   };
 
   const handleDeskripsiChange = (e) => {
@@ -72,6 +77,7 @@ function RegisterPsikolog() {
       formData.append('password', password);
       formData.append('spesialisasi', spesialisasi);
       formData.append('deskripsi', deksripsi);
+      formData.append('gender', gender);
       formData.append('nomerTelepon', nomerTelepon);
       formData.append('kota', kota);
       formData.append('image', image);
@@ -134,6 +140,7 @@ function RegisterPsikolog() {
             {/* Spesialis Psikologi */}
             <p className="text-sm fontLoginn">Spesialisasi*</p>
             <select id="spesialisasi" name="spesialisasi" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleSpesialisasiChange} value={spesialisasi}>
+            <option value="" selected disabled>Pilih Spesialisasi</option>
               <option value="Percintaan">Percintaan</option>
               <option value="Keluarga">Keluarga</option>
             </select>
@@ -142,13 +149,21 @@ function RegisterPsikolog() {
             <p className="text-sm fontLoginn">Deskripsi*</p>
             <textarea className="w-full h-20 ps-2 border rounded-md text-sm text-center justify-center" type="text" name="deskripsi" id="deskripsi" value={deksripsi} onChange={handleDeskripsiChange} placeholder="Deskripsi Diri Anda" required  />
 
+            {/* Gender */}
+            <p className="text-sm fontLoginn">Gender*</p>
+            <select id="gender" name="gender" className="w-full h-10 ps-2 border rounded-md text-sm" onChange={handleGenderChange} value={gender}>
+              <option value="" selected disabled>Pilih Gender</option>
+              <option value="Pria">Pria</option>
+              <option value="Wanita">Wanita</option>
+            </select>
+
             {/* Nomer Telepon */}
             <p className="text-sm fontLoginn">Nomer Telepon*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="nomertelepon"id="nomertelepon" value={nomerTelepon} onChange={handleNomerTelepon}placeholder="Password" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="nomertelepon"id="nomertelepon" value={nomerTelepon} onChange={handleNomerTelepon}placeholder="Nomer Telpon" required  />
 
             {/* Kota */}
             <p className="text-sm fontLoginn">Kota*</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="kota"id="kota" value={kota} onChange={handleKotaChange}placeholder="Password" required  />
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="kota"id="kota" value={kota} onChange={handleKotaChange} placeholder="Kota" required  />
 
             {/* Poto Profile */}
             <p className="text-sm fontLoginn">Poto Profile*</p>

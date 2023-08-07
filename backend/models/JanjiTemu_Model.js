@@ -2,7 +2,7 @@ import { Sequelize, DataTypes } from "sequelize";
 import db from "../config/database.js";
 
 
-const JadwalPsikolog = db.define('jadwalpsikolog', {
+const JanjiTemu = db.define('janjitemu', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,20 +12,26 @@ const JadwalPsikolog = db.define('jadwalpsikolog', {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      id_user: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      id_jadwal: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       tanggal: {
         type: DataTypes.DATE,
-        allowNull: false,
       },
       jam: {
         type: DataTypes.TIME,
-        allowNull: false,
       },
-      available: {
-        type: DataTypes.BOOLEAN,
+      status: {
+        type: DataTypes.STRING,
       },
 }, {
     freezeTableName: true
 })
 
 
-export default JadwalPsikolog;
+export default JanjiTemu;

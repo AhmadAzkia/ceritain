@@ -10,7 +10,7 @@ function Header() {
 
   useEffect(() => {
     // Cek apakah token ada di localStorage, jika ada, berarti session aktif
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('UsernameUser');
     setIsLoggedIn(!!token);
   }, []);
 
@@ -18,7 +18,7 @@ function Header() {
     if (isLoggedIn) {
       // Jika session aktif, arahkan ke halaman profil
       navigate('/profile');
-      localStorage.removeItem("token")
+      localStorage.removeItem("UsernameUser")
     } else {
       // Jika belum login, arahkan ke halaman login
       navigate('/login');
@@ -51,8 +51,8 @@ function Header() {
 
         <div className={`${isOpen ? 'block' : 'hidden'} md:flex flex-col md:flex-row justify-between w-full md:items-center border md:border-none mb-2 md:mb-0`}>
           <div className="flex flex-col md:flex-row mx-auto">
-            <a href="" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16 ">Janji Tatap Muka</a>
-            <a href="" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Testimoni</a>
+            <a href="/psikolog" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16 ">Janji Tatap Muka</a>
+            <a href="/#feedback" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Testimoni</a>
             <a href="" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Tentang Kami</a>
           </div>
           <div className="flex flex-col md:flex-row px-4 py-4">

@@ -14,9 +14,11 @@ const Psikolog = db.define('psikolog', {
     password_psikolog: DataTypes.STRING,
     spesialisasi: DataTypes.STRING,
     deskripsi: DataTypes.STRING,
+    gender: DataTypes.STRING,
     notelepon: DataTypes.STRING,
     kota: DataTypes.STRING,
-    imageurl: DataTypes.STRING
+    imageurl: DataTypes.STRING,
+    status: DataTypes.STRING
 }, {
     freezeTableName: true
 })

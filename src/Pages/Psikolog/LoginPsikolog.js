@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-no-undef */
 import React, { useState } from "react";
-import '../css/font.css';
-import logo from "../components/img/google.png";
+import '../../css/font.css';
+import logo from "../../components/img/google.png";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/home/Navbar";
+import Navbar from "../../components/home/Navbar";
 import axios from "axios";
 
 
-function Login() {
+function LoginPsikolog() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,15 +15,15 @@ function Login() {
     e.preventDefault();
 
     axios
-      .post("https://api.darwan.me/login", { username, password })
+      .post("http://localhost:9000/api/psikolog/loginPsikolog", { username, password })
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
         alert("Login Berhasil");
-        navigate('/');
+        navigate('/psikolog/profile');
 
         // Simpan status login (misalnya token) dalam localStorage
-        localStorage.setItem('UsernameUser', username);
+        localStorage.setItem('id_psikolog', 'hallo');
       })
       .catch((error) => {
         console.error(error.response.data);
@@ -34,11 +34,11 @@ function Login() {
   let navigate = useNavigate()
 
   // Cek apakah data sesi (misalnya token) ada dalam localStorage
-  const isLoggedIn = localStorage.getItem('UsernameUser');
+  const isLoggedIn = !!localStorage.getItem('id_psikolog');
 
   if (isLoggedIn) {
     // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
-    navigate('/profile');
+    navigate('/psikolog/profile');
     return null;
   }
   return (
@@ -51,7 +51,7 @@ function Login() {
                   <span className="text-4xl">C</span>
                   ERITAIN
                 </h1>
-          <p className="text-center text-slate-700 fontLoginn text-sm">Hey, Enter your details to get sign in to your account</p>
+          <p className="text-center text-slate-700 fontLoginn text-sm">Hey, Login ke Akun Psikolog Anda</p>
           <div className="flex flex-col mt-7 gap-2 fontLoginn">
             <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Username" required onChange={(e) => setUsername(e.target.value)}  />
             <div className="text-right mt-4">
@@ -70,7 +70,7 @@ function Login() {
             </div>
           <div className="flex flex-row gap-2 mt-5 mb-5 pl-5">
           <p className="text-sm fontLoginn">Don't have an account?</p>
-          <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/register')}>Sign Up</button>
+          <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/psikolog/admin/register')}>Sign Up</button>
           </div>
         </div>
       </div>
@@ -79,4 +79,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPsikolog;
