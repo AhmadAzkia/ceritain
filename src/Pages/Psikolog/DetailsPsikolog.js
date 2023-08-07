@@ -154,9 +154,32 @@ function DetailsPsikolog() {
         </div>
       )}
 
-
+      <div className="animate-fade-in text-center mt-12   ">
+        <h1 className="text-2xl font-bold mb-4 fontLoginn">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, adipisci.</h1>
+        <p className="text-gray-600 text-sm/loose fontDeskripsi">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      </div>
       {/* Form Untuk Lihat isi Detail */}
-
+      <form action="">
+      <div className="w-full min-h-screen grid place-items-center -mt-24">
+        <div className="w-96 bg-white rounded-xl px-14">
+          <div className="flex flex-col  mt-7 gap-2 fontLoginn">
+            <div className="mt-4">
+            <p className="">Abc</p>
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Masukkan Nama" required  />
+            </div>
+            <div className="mt-4">
+            <p className="">Abc</p>
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Masukkan Nama" required  />
+            </div>
+            <div className="mt-4">
+            <p className="">Abc</p>   
+            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Masukkan Nama" required  />
+            </div>
+          </div>
+            <button className="w-full h-10 bg-white-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7 mb-8 bg-gray-300" type="submit">Sign In</button>
+        </div>
+      </div>
+      </form>
 
       </div>
       <Footer />
