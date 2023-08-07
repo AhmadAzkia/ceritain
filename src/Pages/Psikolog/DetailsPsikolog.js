@@ -1,37 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ImgClock from "../../components/img/doctor/clock.png";
+
 import ImgLocation from "../../components/img/doctor/location.png";
 import Navbar from "../../components/home/Navbar";
 import Footer from "../../components/home/Footer";
+import DatePicker from 'react-datepicker'; // Import react-datepicker
+import 'react-datepicker/dist/react-datepicker.css'; // Import CSS for react-datepicker
 
 function DetailsPsikolog() {
   const { id } = useParams(); // Get the id from the URL
 
   const [Psikolog, setPsikolog] = useState(null);
+  const [JadwalPsikolog, setJadwalPsikolog] = useState(null);
   const [selectedJam, setSelectedJam] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null); // State untuk tanggal dipilih
 
   useEffect(() => {
     fetchPsikolog();
   }, []);
 
+  useEffect(() => {
+    fetchJadwalPsikolog();
+  }, []);
+
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    // Jika Anda ingin mengambil data JadwalPsikolog berdasarkan tanggal yang dipilih,
+    // Anda dapat melakukan pemanggilan API atau operasi lain di sini.
+    // Contoh:
+    // fetchJadwalPsikologByDate(date);
+  };
+
   const handleSelectJam = (jam) => {
     setSelectedJam(jam);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const currentDate = new Date();
+      // Get the day as a number and convert it to a string
+  const day = currentDate.getDate().toString();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-  });
+  // Add a leading zero for single-digit days
+  const formattedDay = day.length === 1 ? `0${day}` : day;
+
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
+
+  // Format the date as YYYY-MM-DD
+  const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${formattedDay}`;
+
+
 
   // Mengambil Data Psikolog
   const fetchPsikolog = async () => {
@@ -47,24 +68,29 @@ function DetailsPsikolog() {
     }
   };
 
-  // Data sementara untuk jadwal praktek psikolog
-  const jadwalPraktekSementara = [
-    { id: 1, jam: '08:00', available: true },
-    { id: 2, jam: '09:00', available: true },
-    { id: 3, jam: '10:00', available: false },
-    { id: 4, jam: '11:00', available: true },
-    { id: 5, jam: '13:00', available: false },
-    { id: 6, jam: '14:00', available: true },
-    { id: 7, jam: '15:00', available: true },
-  ];
+  const fetchJadwalPsikolog = async () => {
+    try {
+      const response = await fetch(`http://localhost:9000/api/JadwalPsikolog`);
+      const data = await response.json();
+      
+      const parsedId = parseInt(id);
+      const selectedJadwalPsikolog = data.filter((jadwalpsikolog) => jadwalpsikolog.tanggal === formattedDate && jadwalpsikolog.id_psikolog === parsedId);
+      setJadwalPsikolog(selectedJadwalPsikolog);
+
+      console.log(JadwalPsikolog);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
       <Navbar />
     <div>
       {Psikolog && (
+        
         <div className="flex flex-col items-center mt-14 lg:flex-row md:justify-between">
-          <div className="text-center lg:w-1/2 lg:mr-10">
+          <div className="text-center lg:w-1/2 lg:mr-10 md:mx-14">
             <h1 className="text-2xl font-bold mb-4 fontLoginn md:text-4xl">{Psikolog.nama_psikolog}</h1>
             <small className="text-slate-500 mb-6 block md:text-lg">{Psikolog.spesialisasi}</small>
 
@@ -90,22 +116,37 @@ function DetailsPsikolog() {
           </div>
 
           <div className="mt-6 lg:w-1/2 md:mr-16">
-            <h2 className="text-lg font-semibold mb-2">Jadwal Praktik Psikolog</h2>
-            <div className="grid grid-cols-3 gap-4">
-            {jadwalPraktekSementara.map((jadwal) => (
-                <button
-                key={jadwal.id}
-                className={`w-24 h-10 m-2 rounded-lg ${
-                  selectedJam === jadwal.jam ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
-                } ${!jadwal.available && 'cursor-not-allowed opacity-50'}`}
-                onClick={() => handleSelectJam(jadwal.jam)}
-                disabled={!jadwal.available}
-              >
-                {jadwal.jam}
-              </button>
-            ))}
-            </div>
+          <h2 className="text-lg font-semibold mb-2">Pilih Tanggal</h2>
+          <div className="date-picker-container">
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              dateFormat="yyyy-MM-dd"
+              minDate={new Date()} // Tidak memungkinkan memilih tanggal sebelum hari ini
+              className="custom-date-picker p-2 rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:bg-blue-500 focus:text-white transition-all" // Tambahkan kelas CSS kustom
+            />
           </div>
+          <h2 className="text-lg font-semibold mb-2">Jadwal Praktik Psikolog</h2>
+          <div className="grid grid-cols-3 gap-4">
+            {/* Render jadwal sesuai dengan tanggal yang dipilih */}
+            {JadwalPsikolog && JadwalPsikolog.length > 0 ? (
+              JadwalPsikolog.map((jadwal) => (
+                <button
+                  key={jadwal.id}
+                  className={`w-24 h-10 m-2 rounded-lg ${
+                    selectedJam === jadwal.jam ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
+                  } ${!jadwal.available && 'cursor-not-allowed opacity-50'}`}
+                  onClick={() => handleSelectJam(jadwal.jam)}
+                  disabled={!jadwal.available}
+                >
+                  {jadwal.jam}
+                </button>
+              ))
+            ) : (
+              <p>Jadwal tidak tersedia</p>
+            )}
+          </div>
+        </div>
         </div>
       )}
 
