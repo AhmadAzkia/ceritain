@@ -116,6 +116,7 @@ function DetailsPsikolog() {
             </div>
           </div>
 
+        {/* Pilih Tanggal untuk Memunculkan Jadwal Psikolog */}
           <div className="mt-6 lg:w-1/2 md:mr-16 text-center">
             <h2 className="text-lg font-semibold mb-2">Pilih Tanggal</h2>
             <div className="date-picker-container">
@@ -128,6 +129,7 @@ function DetailsPsikolog() {
               />
             </div>
           
+          {/* Jadwal Praktik Psikolog */}
             <h2 className="text-lg font-semibold mb-2 mt-6">Jadwal Praktik Psikolog</h2>
             <div className="grid grid-cols-3 gap-4">
               {/* Render jadwal sesuai dengan tanggal yang dipilih */}
@@ -153,10 +155,9 @@ function DetailsPsikolog() {
       )}
 
 
-      
-      <div className="mt-6 text-center">
-        <button className="px-6 py-2 mt-6 bg-[#5A96E3] rounded-lg text-white font-semibold hover:bg-blue-700 focus:outline-none focus:bg-blue-700" type="submit">Buat Janji Sekarang</button>
-      </div>
+      {/* Form Untuk Lihat isi Detail */}
+
+
       </div>
       <Footer />
     </>
