@@ -9,7 +9,7 @@ function Profile() {
   let navigate = useNavigate()
 
     // Cek apakah data sesi (misalnya token) ada dalam localStorage
-    const isLoggedIn = !!localStorage.getItem('token');
+    const isLoggedIn = localStorage.getItem('UsernameUser');
 
     if (!isLoggedIn) {
       // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)

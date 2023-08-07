@@ -6,21 +6,22 @@ import '../../App.css'
 import '../../css/font.css';
 
 function ProfilePsikolog() {
-    const [session, setSession] = useState('');
-    let navigate = useNavigate()
+    // const [session, setSession] = useState('');
+    // let navigate = useNavigate()
 
-    useEffect(() => {
-        const getSession = localStorage.getItem('id_psikologi');
-        setSession(getSession);
-    })
-    // Cek apakah data sesi (misalnya token) ada dalam localStorage
-    const isLoggedIn = !!localStorage.getItem('id_psikolog');
+    // useEffect(() => {
+    //     const getSession = localStorage.getItem('id_psikologi');
+    //     setSession(getSession);
+    // })
 
-    if (!isLoggedIn) {
-      // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
-      navigate('/psikolog/admin/login');
-      return null;
-    }
+    // // Cek apakah data sesi (misalnya token) ada dalam localStorage
+    // const isLoggedIn = !!localStorage.getItem('id_psikolog');
+
+    // if (!isLoggedIn) {
+    //   // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
+    //   navigate('/psikolog/admin/login');
+    //   return null;
+    // }
   return (
    <>
    <Navbar />

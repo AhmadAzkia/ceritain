@@ -10,7 +10,7 @@ function Header() {
 
   useEffect(() => {
     // Cek apakah token ada di localStorage, jika ada, berarti session aktif
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('UsernameUser');
     setIsLoggedIn(!!token);
   }, []);
 
@@ -18,7 +18,7 @@ function Header() {
     if (isLoggedIn) {
       // Jika session aktif, arahkan ke halaman profil
       navigate('/profile');
-      localStorage.removeItem("token")
+      localStorage.removeItem("UsernameUser")
     } else {
       // Jika belum login, arahkan ke halaman login
       navigate('/login');

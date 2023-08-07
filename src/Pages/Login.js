@@ -20,10 +20,10 @@ function Login() {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
         alert("Login Berhasil");
-        navigate('/profile');
+        navigate('/');
 
         // Simpan status login (misalnya token) dalam localStorage
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('UsernameUser', username);
       })
       .catch((error) => {
         console.error(error.response.data);
@@ -34,7 +34,7 @@ function Login() {
   let navigate = useNavigate()
 
   // Cek apakah data sesi (misalnya token) ada dalam localStorage
-  const isLoggedIn = !!localStorage.getItem('token');
+  const isLoggedIn = localStorage.getItem('UsernameUser');
 
   if (isLoggedIn) {
     // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)

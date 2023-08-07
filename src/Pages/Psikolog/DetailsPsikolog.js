@@ -6,15 +6,26 @@ import Navbar from "../../components/home/Navbar";
 import Footer from "../../components/home/Footer";
 import DatePicker from 'react-datepicker'; // Import react-datepicker
 import 'react-datepicker/dist/react-datepicker.css'; // Import CSS for react-datepicker
+import e from 'cors';
 
 function DetailsPsikolog() {
   const { id } = useParams(); // Get the id from the URL
 
   const [Psikolog, setPsikolog] = useState(null);
   const [JadwalPsikolog, setJadwalPsikolog] = useState(null);
+
+  // Inisialisasi Jam yang dipilih dan Tanggal yang dipilih
   const [selectedJam, setSelectedJam] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [nama, setNama] = useState("");
+  const [noTelepon, setNomerTelepon] = useState("");
+  const [email, setEmail] = useState("");
 
+  // Inisialisasi User
+  const [User, setSelectedUser] = useState(null);
+
+  console.log(nama);
+  
   useEffect(() => {
     fetchPsikolog();
   }, []);
@@ -23,6 +34,17 @@ function DetailsPsikolog() {
     fetchJadwalPsikolog(selectedDate);
   }, [selectedDate]);
 
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    // Mengisi nilai nama_user dengan nilai User.nama_user saat komponen pertama kali dirender
+    if (User) {
+      setNama(User.nama_user);
+    }
+  }, [User])
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
@@ -30,6 +52,13 @@ function DetailsPsikolog() {
   const handleSelectJam = (jam) => {
     setSelectedJam(jam);
   };
+
+  const handleNama = () => {
+    setNama(e)
+  }
+
+  // Cek apakah data sesi (misalnya token) ada dalam localStorage
+   const isLoggedIn = localStorage.getItem('UsernameUser');
 
   // Settting Agar Format Data nya di ubah Menjadi DD-MM-YYYY
   const formatDate = (date) => {
@@ -68,11 +97,24 @@ function DetailsPsikolog() {
       // Memeriksa apakah data yang sesuai dengan kriteria ditemukan atau tidak
       if (selectedJadwalPsikolog.length > 0) {
         setJadwalPsikolog(selectedJadwalPsikolog);
-        console.log("Data berhasil diambil:");
-        console.log(selectedJadwalPsikolog);
       } else {
         console.log("Data tidak ditemukan.");
       }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  // Mengambil JadwalPsikolog Berdasarkan Tanggal yang di pilih dan Berdasarkan ID Psikolog yang di Lempar / di GET dari URL
+  const fetchUser = async () => {
+    try {
+      const response = await fetch(`https://api.darwan.me/user`);
+      const data = await response.json();
+      
+      
+      const selectedUser = data.find((user) => user.username === isLoggedIn);
+      setSelectedUser(selectedUser);
+
     } catch (error) {
       console.log(error.message);
     }
@@ -154,31 +196,43 @@ function DetailsPsikolog() {
         </div>
       )}
 
-      <div className="animate-fade-in text-center mt-12   ">
+
+      <div className="animate-fade-in text-center mt-16 md:mt-20">
         <h1 className="text-2xl font-bold mb-4 fontLoginn">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, adipisci.</h1>
         <p className="text-gray-600 text-sm/loose fontDeskripsi">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
       </div>
-      {/* Form Untuk Lihat isi Detail */}
+
+      {/* Form Untuk Submit Pemesanan */}
       <form action="">
-      <div className="w-full min-h-screen grid place-items-center -mt-24">
+      {User && (
+      <div className="w-full grid place-items-center">
         <div className="w-96 bg-white rounded-xl px-14">
           <div className="flex flex-col  mt-7 gap-2 fontLoginn">
             <div className="mt-4">
-            <p className="">Abc</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Masukkan Nama" required  />
+              <p className="">Nama Lengkap</p>
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Nama Lengkap" onChange={(e) => setNama(e.target.value)} required defaultValue={User.nama_user}  />
             </div>
             <div className="mt-4">
-            <p className="">Abc</p>
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Masukkan Nama" required  />
+              <p className="">Nomer Telepon</p>
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Nomer Telepon" onChange={(e) => setNomerTelepon(e.target.value)} required/>
             </div>
             <div className="mt-4">
-            <p className="">Abc</p>   
-            <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Masukkan Nama" required  />
+              <p className="">Email </p>   
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Email"  onChange={(e) => setNomerTelepon(e.target.value)} required/>
+            </div>
+            <div className="mt-4">
+              <p className="">Tanggal Pesan</p>   
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Tanggal Pesan" required  disabled value={formatDate(selectedDate)}/>
+            </div>
+            <div className="mt-4">
+              <p className="">Jam Pesan</p>   
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Tanggal Pesan" required  disabled value={selectedJam}/>
             </div>
           </div>
-            <button className="w-full h-10 bg-white-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7 mb-8 bg-gray-300" type="submit">Sign In</button>
+            <button className="w-full h-10 bg-white-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7 mb-8 bg-gray-300" type="submit">{isLoggedIn}</button>
         </div>
       </div>
+      )}
       </form>
 
       </div>

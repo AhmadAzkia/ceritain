@@ -1,5 +1,5 @@
 import express from "express";
-import { getJadwalPsikolog } from "../controllers/JadwalPsikolog.js"
+import { getJadwalPsikolog } from "../controllers/JadwalPsikolog_Controller.js"
 
 const router = express.Router();
 
