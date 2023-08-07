@@ -159,7 +159,7 @@ console.log(psikolog);
 
               <div className="mt-5 mb-5
               text-sm text-center">
-                <button className="border w-32 md:w-40 h-6 md:h-8 bgWarna text-white rounded-lg hover:shadow-md">Booking Selesai</button>
+                <button className="border w-32 md:w-40 h-6 md:h-8 bgWarna text-white rounded-lg hover:shadow-md">{getPesanan.status}</button>
               </div>
             </div>
        
