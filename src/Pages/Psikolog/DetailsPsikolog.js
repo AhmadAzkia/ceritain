@@ -239,7 +239,7 @@ function DetailsPsikolog() {
                 onChange={handleDateChange}
                 dateFormat="yyyy-MM-dd"
                 minDate={new Date()} // Tidak memungkinkan memilih tanggal sebelum hari ini
-                className="custom-date-picker p-2 rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:bg-blue-500 focus:text-white transition-all" // Tambahkan kelas CSS kustom
+                className="custom-date-picker p-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:bg-blue-500 focus:text-white transition-all text-center" // Tambahkan kelas CSS kustom
               />
             </div>
           

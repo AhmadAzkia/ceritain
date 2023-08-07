@@ -49,7 +49,7 @@ console.log(psikolog);
   // Mengambil Pesanan
   const fetchPesanan = async (user) => {
     try {
-      const response = await fetch(`http://api.darwan.me/api/listJanjiTemu`);
+      const response = await fetch(`https://api.darwan.me/api/listJanjiTemu`);
       const data = await response.json();
 
       const selectedPesanan = data.filter((getPesanan) => getPesanan.id_user === user.id_user);
