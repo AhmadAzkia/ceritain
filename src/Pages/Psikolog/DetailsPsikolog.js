@@ -23,10 +23,11 @@ function DetailsPsikolog() {
   const [email, setEmail] = useState("");
   const [tanggalPesan, setTanggalPesan] = useState("");
   const [Jam, setJam] = useState("");
-
+  const [idJadwal, setIdJadwal] = useState("");
   // Inisialisasi User
   const [User, setSelectedUser] = useState(null);
 
+  console.log(idJadwal)
   useEffect(() => {
     fetchPsikolog();
   }, []);
@@ -69,9 +70,9 @@ function DetailsPsikolog() {
     setSelectedJam(jam);
   };
 
-  const handleNama = () => {
-    setNama(e)
-  }
+  const handleIdJadwal = (idJadwal) => {
+    setIdJadwal(idJadwal);
+  };
 
   // Cek apakah data sesi (misalnya token) ada dalam localStorage
    const isLoggedIn = localStorage.getItem('UsernameUser');
@@ -140,18 +141,19 @@ function DetailsPsikolog() {
     e.preventDefault();
   
     // Periksa apakah data psikolog dan user sudah tersedia
-    if (Psikolog && User) {
+    if (Psikolog && User ) {
       const data = {
         idPsikolog: Psikolog.id_psikolog, // Ambil id dari Psikolog
         idUser: User.id_user, // Ambil id dari User
         namaUser: nama,
         emailUser: email,
         noTeleponUser: noTelepon,
+        idJadwal: idJadwal,
         tanggalPesan: tanggalPesan,
         jamPesan: Jam, 
       };
   
-      axios.post("http://localhost:9000/api/createJanjiTemu", data)
+      axios.post("https://api.darwan.me/api/createJanjiTemu", data)
         .then((response) => {
           console.log(response.data);
           // Lakukan tindakan yang diperlukan setelah berhasil registrasi
@@ -167,6 +169,24 @@ function DetailsPsikolog() {
             alert('Registrasi Gagal! Periksa kembali data yang diisi.');
           }
         });
+        
+        axios.put("https://api.darwan.me/updateJadwalPsikolog", data)
+        .then((response) => {
+          console.log(response.data);
+          // Lakukan tindakan yang diperlukan setelah berhasil registrasi
+          alert("Berhasil Hapu");
+        })
+        .catch((error) => {
+          console.error(error.response.data);
+          if (error.response.status === 409 && error.response.data.msg === 'Username is already taken') {
+            // Jika status 409 (Conflict) dan pesan 'Username is already taken', tampilkan alert sesuai dengan respons API
+            alert('Username sudah ada. Coba gunakan username lain.');
+          } else {
+            // Jika ada kesalahan lain atau respon tidak terdefinisi, tampilkan pesan kesalahan umum
+            alert('Error Maneh.');
+          }
+        });
+      
     } else {
       alert('Data psikolog atau data user tidak tersedia.');
     }
@@ -234,7 +254,11 @@ function DetailsPsikolog() {
                     className={`w-24 h-10 m-2 rounded-lg ${
                       selectedJam === jadwal.jam ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
                     } ${!jadwal.available && 'cursor-not-allowed opacity-50'}`}
-                    onClick={() => handleSelectJam(jadwal.jam)}
+                    onClick={() => {
+                      handleSelectJam(jadwal.jam);
+                      handleIdJadwal(jadwal.id);
+                      }
+                    }
                     disabled={!jadwal.available}
                   >
                     {jadwal.jam}
