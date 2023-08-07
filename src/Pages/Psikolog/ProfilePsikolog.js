@@ -25,7 +25,7 @@ function ProfilePsikolog() {
   return (
    <>
    <Navbar />
-        <h1>{session}</h1>
+        
    <Footer />
    </>
   );
