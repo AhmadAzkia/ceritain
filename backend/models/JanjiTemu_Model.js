@@ -3,10 +3,10 @@ import db from "../config/database.js";
 
 
 const JanjiTemu = db.define('janjitemu', {
-    id: {
+      id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true
       },
       id_psikolog: {
         type: DataTypes.INTEGER,
@@ -16,14 +16,26 @@ const JanjiTemu = db.define('janjitemu', {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      nama_user: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email_user: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      noTelepon_user: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       id_jadwal: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      tanggal: {
+      tanggalPesan: {
         type: DataTypes.DATE,
       },
-      jam: {
+      jamPesan: {
         type: DataTypes.TIME,
       },
       status: {

@@ -7,6 +7,7 @@ import Footer from "../../components/home/Footer";
 import DatePicker from 'react-datepicker'; // Import react-datepicker
 import 'react-datepicker/dist/react-datepicker.css'; // Import CSS for react-datepicker
 import e from 'cors';
+import axios from "axios";
 
 function DetailsPsikolog() {
   const { id } = useParams(); // Get the id from the URL
@@ -20,12 +21,12 @@ function DetailsPsikolog() {
   const [nama, setNama] = useState("");
   const [noTelepon, setNomerTelepon] = useState("");
   const [email, setEmail] = useState("");
+  const [tanggalPesan, setTanggalPesan] = useState("");
+  const [Jam, setJam] = useState("");
 
   // Inisialisasi User
   const [User, setSelectedUser] = useState(null);
 
-  console.log(nama);
-  
   useEffect(() => {
     fetchPsikolog();
   }, []);
@@ -44,6 +45,21 @@ function DetailsPsikolog() {
       setNama(User.nama_user);
     }
   }, [User])
+
+  useEffect(() => {
+    // Mengisi nilai nama_user dengan nilai User.nama_user saat komponen pertama kali dirender
+    if (selectedDate) {
+      setTanggalPesan(formatDate(selectedDate));
+    }
+  })
+
+  useEffect(() => {
+    // Mengisi nilai nama_user dengan nilai User.nama_user saat komponen pertama kali dirender
+    if (selectedJam) {
+      setJam(selectedJam);
+    }
+  }, [selectedJam])
+
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -117,6 +133,42 @@ function DetailsPsikolog() {
 
     } catch (error) {
       console.log(error.message);
+    }
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+  
+    // Periksa apakah data psikolog dan user sudah tersedia
+    if (Psikolog && User) {
+      const data = {
+        idPsikolog: Psikolog.id_psikolog, // Ambil id dari Psikolog
+        idUser: User.id_user, // Ambil id dari User
+        namaUser: nama,
+        emailUser: email,
+        noTeleponUser: noTelepon,
+        tanggalPesan: tanggalPesan,
+        jamPesan: Jam, 
+      };
+  
+      axios.post("http://localhost:9000/api/createJanjiTemu", data)
+        .then((response) => {
+          console.log(response.data);
+          // Lakukan tindakan yang diperlukan setelah berhasil registrasi
+          alert("Registrasi Berhasil");
+        })
+        .catch((error) => {
+          console.error(error.response.data);
+          if (error.response.status === 409 && error.response.data.msg === 'Username is already taken') {
+            // Jika status 409 (Conflict) dan pesan 'Username is already taken', tampilkan alert sesuai dengan respons API
+            alert('Username sudah ada. Coba gunakan username lain.');
+          } else {
+            // Jika ada kesalahan lain atau respon tidak terdefinisi, tampilkan pesan kesalahan umum
+            alert('Registrasi Gagal! Periksa kembali data yang diisi.');
+          }
+        });
+    } else {
+      alert('Data psikolog atau data user tidak tersedia.');
     }
   };
 
@@ -218,18 +270,18 @@ function DetailsPsikolog() {
             </div>
             <div className="mt-4">
               <p className="">Email </p>   
-              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Email"  onChange={(e) => setNomerTelepon(e.target.value)} required/>
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Email"  onChange={(e) => setEmail(e.target.value)} required/>
             </div>
             <div className="mt-4">
               <p className="">Tanggal Pesan</p>   
-              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Tanggal Pesan" required  disabled value={formatDate(selectedDate)}/>
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="date" name="username" id="username" placeholder="Tanggal Pesan" required  disabled value={formatDate(selectedDate)} onChange={(e) => setTanggalPesan(e.target.value)}/>
             </div>
             <div className="mt-4">
               <p className="">Jam Pesan</p>   
-              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="text" name="username" id="username" placeholder="Tanggal Pesan" required  disabled value={selectedJam}/>
+              <input className="w-full h-10 ps-2 border rounded-md text-sm" type="time" name="username" id="username" placeholder="Tanggal Pesan"  disabled value={selectedJam} onChange={(e) => setJam(e.target.value)}/>
             </div>
           </div>
-            <button className="w-full h-10 bg-white-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7 mb-8 bg-gray-300" type="submit">{isLoggedIn}</button>
+            <button className="w-full h-10 bg-white-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-7 mb-8 bg-gray-300" type="submit" onClick={handleRegister}>Submit</button>
         </div>
       </div>
       )}
