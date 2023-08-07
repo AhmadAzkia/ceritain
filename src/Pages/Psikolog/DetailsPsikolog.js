@@ -219,13 +219,13 @@ function DetailsPsikolog() {
                 onChange={handleDateChange}
                 dateFormat="yyyy-MM-dd"
                 minDate={new Date()} // Tidak memungkinkan memilih tanggal sebelum hari ini
-                className="custom-date-picker p-2 rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:bg-blue-500 focus:text-white transition-all" // Tambahkan kelas CSS kustom
+                className="custom-date-picker p-2 rounded border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white focus:outline-none focus:bg-blue-500 focus:text-white transition-all text-center" // Tambahkan kelas CSS kustom
               />
             </div>
           
           {/* Jadwal Praktik Psikolog */}
             <h2 className="text-lg font-semibold mb-2 mt-6">Jadwal Praktik Psikolog</h2>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4 md:ml-12">
               {/* Render jadwal sesuai dengan tanggal yang dipilih */}
               {JadwalPsikolog && JadwalPsikolog.length > 0 ? (
                 JadwalPsikolog.map((jadwal) => (
