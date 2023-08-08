@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from "react";
 import Navbar from "../components/home/Navbar";
 import Footer from "../components/home/Footer";
+import clock from "../components/img/doctor/clock.png";
+import calendar from "../components/img/doctor/calendar.png";
 import { useNavigate } from "react-router-dom";
 import '../App.css'
 import '../css/font.css';
@@ -136,7 +138,7 @@ console.log(psikolog);
       const selectedPsikolog = psikolog.find((psikologItem) => psikologItem.id_psikolog === getPesanan.id_psikolog);
         return (
           <div className="justify-center">
-            <div className="mt-10 border rounded-lg w-56 md:w-96 mx-auto">
+            <div className="mt-10 border rounded-lg shadow-lg w-64 md:w-96 mx-auto">
               <div className="flex justify-center">
               {selectedPsikolog && (
                 <img src={selectedPsikolog.imageurl} alt="" className="w-20 md:w-32 mt-5 rounded-full" />
@@ -147,18 +149,29 @@ console.log(psikolog);
               {selectedPsikolog && (
                 <div>
                   <h2 className="text-center mt-2 font-medium text-base md:text-lg">{selectedPsikolog.nama_psikolog}</h2>
-                  <h3 className="text-center text-xs md:text-base">Spesialisasi {selectedPsikolog.spesialisasi}</h3>
+                  <h3 className="text-center text-xs md:text-base text-gray-500">Spesialisasi {selectedPsikolog.spesialisasi}</h3>
+                  <h3 className="text-center text-xs md:text-base text-gray-500">{selectedPsikolog.gender}</h3>
                 </div>
                 )}
               </div>
            
 
-              <div className="text-xs md:text-sm text-center mt-10">
+              <div className="text-xs md:text-sm text-center mt-8">
                 <p>Nama Pemesan : {getPesanan.nama_user}</p>
                 <p>Email : {getPesanan.email_user}</p>
-                <p>No Telepon : {getPesanan.noTelepon_user}</p>
-                <p>Tanggal : {getPesanan.tanggalPesan}</p>
-                <p>Jam : {getPesanan.jamPesan}</p>
+                <p>No Telepon : {getPesanan.noTelepon_user}</p><br />
+
+                <div>
+                  <div className="flex justify-center">
+                    <img src={calendar} className="w-4 h-4 mr-2" />
+                    <p>{getPesanan.tanggalPesan}</p>
+                  </div>
+                  
+                  <div className="flex justify-center mt-1 mr-2 md:mr-4">
+                    <img src={clock} className="w-4 h-4 mr-2"/>
+                    <p className="ml-3">{getPesanan.jamPesan}</p>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-5 mb-5
