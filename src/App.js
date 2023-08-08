@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import { render } from "react-dom";
 import Profile from "./Pages/Profile";
+import KirimEmail from './Pages/Psikolog/KirimEmail';
 
 // Psikolog
 import Psikolog from './Pages/Psikolog/Psikolog';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/psikolog/detailspsikolog/:id' element={<DetailsPsikolog />}/>
         <Route path='/psikolog/admin/register' element={<RegisterPsikolog />}/>
         <Route path='/psikolog/admin/login' element={<LoginPsikolog />}/>
+        <Route path='/Psikolog/KirimEmail' element={<KirimEmail />}/>
       </Routes>
     </Router>
   );
