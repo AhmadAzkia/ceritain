@@ -85,9 +85,9 @@ function ProfilePsikolog() {
           <div className="md:text-start text-end">
             <button className="border border-black px-10 py-2 rounded-xl mb-14">Pesanan Aktif</button>
           </div>
-          {JanjiTemu.map((listJanjiTemu) => (
          
-          <div className="grid md:flex gap-14 ">
+          <div className="grid md:grid-cols-3 gap-14 ">
+          {JanjiTemu.map((listJanjiTemu) => (
             <div className="p-10 border border-black rounded-xl">
               <img src={iniWeh} alt="unsplash.com" className="w-36 h-28 rounded mx-auto" />
               <div className="text-center">
@@ -98,9 +98,10 @@ function ProfilePsikolog() {
                 <button className="bg-blue-600 w-48 py-2 rounded-xl mx-auto text-white font-medium hover:bg-blue-700 transition-all mt-6">Booking Selesai</button>
               </div>
             </div>
+             ))}
           </div>
           
-          ))}
+         
         </div>
       </div>
     </div>
