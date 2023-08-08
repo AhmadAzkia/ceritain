@@ -26,14 +26,7 @@ function Register() {
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    setImage(e.target.files[0])
   };
 
 
@@ -52,8 +45,14 @@ function Register() {
       return;
     }
 
+    const formData = new FormData();
+      formData.append('name', name);
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('image', image);
+
     axios
-      .post("https://api.darwan.me/register", { name, username, password, image })
+      .post("http://localhost:9000/register", formData)
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil registrasi
@@ -103,7 +102,8 @@ function Register() {
             <p className="text-sm fontLoginn">Password*</p>
             <input className="w-full h-10 ps-2 border rounded-md text-sm" type="password" name="Password"id="password"
             value={password} onChange={handlePasswordChange}placeholder="Password" required  />
-            <input type="file" onChange={handleImageChange} />
+            <p className="text-sm fontLoginn">Poto Profile*</p>
+           <input type="file" onChange={handleImageChange} />
           </div>
           <button className="w-full h-10 bg-blue-300 font-semibold rounded-md text-sm fontLoginn bg-opacity-75 mt-10" type="submit">Sign Up</button>
           <div className="text-xs fontLoginn mt-4 text-center">-- Or --</div>
