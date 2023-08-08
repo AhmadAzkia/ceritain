@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-undef */
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import '../../css/font.css';
 import logo from "../../components/img/google.png";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,23 @@ import axios from "axios";
 function LoginPsikolog() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // Inisialisasi IsLoggedIn User
+  const isLoggedInUser = localStorage.getItem('UsernameUser');
+  const isLoggedInPsikolog = localStorage.getItem('id_psikolog');
+
+  // Session Jika Belum Login Psikolog 
+  useEffect(() => {
+    if (isLoggedInPsikolog) {
+      // Navigate Ke Halaman Login
+      navigate('/psikolog/admin/profile');
+    }
+
+    if (isLoggedInUser) {
+      // Navigate Ke Halaman Login
+      navigate('/profile');
+    }
+  })
 
   const handleSubmitLogin = (e) => {
     e.preventDefault();
@@ -33,14 +50,6 @@ function LoginPsikolog() {
 
   let navigate = useNavigate()
 
-  // Cek apakah data sesi (misalnya token) ada dalam localStorage
-  const isLoggedIn = localStorage.getItem('id_psikolog');
-
-  if (isLoggedIn) {
-    // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
-    navigate('/psikolog/profile');
-    return null;
-  }
   return (
     <>
     <Navbar />

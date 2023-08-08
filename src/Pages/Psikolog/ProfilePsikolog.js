@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/home/Navbar";
 import Footer from "../../components/home/Footer";
 import { useNavigate } from "react-router-dom";
-import iniWeh from "../../components/img/darwan.jpg"
+import iniWeh from "../../components/img/darwan.jpg";
+import clock from "../../components/img/doctor/clock.png";
+import calendar from "../../components/img/doctor/calendar.png";
 import '../../App.css'
 import '../../css/font.css';
 
@@ -13,23 +15,30 @@ function ProfilePsikolog() {
     const isLoggedInPsikolog = localStorage.getItem('id_psikolog');
     const [Psikolog, setPsikolog] = useState(null);
     const [JanjiTemu, setJanjiTemu] = useState([]);
-
+    const [user, setUser] = useState(null);
+    console.log(user)
+    // Memanggil Fetch Psikolog saat di Render pertama kali
     useEffect(() => {
       fetchPsikolog();
     }, []);
 
+     // Memanggil Fetch JanjiTemu saat di Render pertama kali
     useEffect(() => {
       fetchJanjiTemu(Psikolog);
-  }, [Psikolog]);
+    }, [Psikolog]);
 
-  console.log(JanjiTemu)
+    // Memanggil Fetch User saat di render Pertama Kali
+    useEffect(() => {
+      fetchUser(JanjiTemu);
+    }, [JanjiTemu]);
 
-
-    if (!isLoggedInPsikolog) {
-      // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
-      navigate('/psikolog/admin/login');
-      return null;
-    }
+    // Session Jika Belum Login Psikolog 
+    useEffect(() => {
+      if (!isLoggedInPsikolog) {
+        // Navigate Ke Halaman Login
+        navigate('/psikolog/admin/login');
+      }
+    })
 
     // Mengambil Data Psikolog Tergantung yang kita Pesan
     const fetchPsikolog = async () => {
@@ -45,7 +54,7 @@ function ProfilePsikolog() {
       }
     };
 
-      // Mengambil Pesanan
+    // Mengambil Pesanan
     const fetchJanjiTemu = async (Psikolog) => {
       try {
         const response = await fetch(`https://api.darwan.me/api/listJanjiTemu`);
@@ -58,6 +67,22 @@ function ProfilePsikolog() {
         console.log(error.message);
       }
     };
+
+     // Mengambil User Berdasarkan session
+    const fetchUser = async (JanjiTemu) => {
+      try {
+        const response = await fetch(`https://api.darwan.me/user`);
+        const data = await response.json();
+        
+        const selectedUser = data.find((getuser) => getuser.id_user === JanjiTemu.id_user);
+        setUser(selectedUser);
+
+      } catch (error) {
+      console.log(error.message);
+      }
+    };
+
+    
 
 
   return (
@@ -86,23 +111,35 @@ function ProfilePsikolog() {
             <button className="border border-black px-10 py-2 rounded-xl mb-14">Pesanan Aktif</button>
           </div>
          
-          <div className="grid md:grid-cols-3 gap-14 ">
-          {JanjiTemu.map((listJanjiTemu) => (
-            <div className="p-10 border border-black rounded-xl">
-              <img src={iniWeh} alt="unsplash.com" className="w-36 h-28 rounded mx-auto" />
-              <div className="text-center">
-                <h1 className="font-medium text-2xl mt-2">{listJanjiTemu.nama_user}</h1>
-                <p className="font-medium text-lg">S1 Psikolog</p>
-                <p className="mt-24">Tanggal : 15 Agustus 2022</p>
-                <p>Jam : 10:30</p>
-                <button className="bg-blue-600 w-48 py-2 rounded-xl mx-auto text-white font-medium hover:bg-blue-700 transition-all mt-6">Booking Selesai</button>
+          <div className="grid md:grid-cols-3 gap-6">
+            {JanjiTemu.map((listJanjiTemu) => (
+              <div key={listJanjiTemu.id} className="p-6 border border-gray-300 rounded-lg shadow-lg hover:shadow-xl">
+                <img src={iniWeh} alt="unsplash.com" className="w-24 h-24 rounded-full mx-auto mb-4" />
+                <div className="text-center">
+                  <h1 className="font-semibold text-xl text-gray-700 mt-2">{listJanjiTemu.nama_user}</h1>
+                  <p className="text-gray-500">S1 Psikolog</p>
+
+                    <div>
+                      </div>
+
+                    <div className="flex justify-center mt-1 mr-2 md:mr-4">
+                      <img src={calendar} className="w-4 h-4 mr-2" />
+                      <p>{listJanjiTemu.tanggalPesan}</p>
+                    </div>
+                    
+                    <div className="flex justify-center mt-1 mr-2 md:mr-4">
+                      <img src={clock} className="w-4 h-4 mr-2"/>
+                      <p className="ml-3">{listJanjiTemu.jamPesan}</p>
+                    </div>
+                  <button className="bg-blue-600 w-40 py-2 rounded-lg mx-auto text-white font-semibold hover:bg-blue-700 transition-colors mt-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    Booking Selesai
+                  </button>
+                </div>
               </div>
-            </div>
-             ))}
+            ))}
           </div>
-          
-         
         </div>
+
       </div>
     </div>
    <Footer />
@@ -111,3 +148,5 @@ function ProfilePsikolog() {
 }
 
 export default ProfilePsikolog;
+
+

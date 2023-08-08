@@ -52,7 +52,7 @@ function Register() {
       formData.append('image', image);
 
     axios
-      .post("http://localhost:9000/register", formData)
+      .post("https://api.darwan.me/register", formData)
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil registrasi
