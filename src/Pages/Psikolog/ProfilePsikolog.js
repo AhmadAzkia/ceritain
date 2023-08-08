@@ -26,7 +26,7 @@ function ProfilePsikolog() {
   return (
    <>
    <Navbar />
-   <div className="profile-psikolog w-full min-h-screen py-20">
+   <div className="profile-psikolog w-full min-h-screen py-20 fontLoginn">
       <div className="container mx-auto px-2">
         <h1 className="font-bold text-3xl mb-24">Profile Psikolog</h1>
         <div className="grid md:grid-cols-2 grid-cols-1 grid-rows-1 items-center gap-8">
