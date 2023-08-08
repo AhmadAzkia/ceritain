@@ -7,6 +7,7 @@ function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedInPsikolog, setIsLoggedInPsikolog] = useState(false);
 
   useEffect(() => {
     // Cek apakah token ada di localStorage, jika ada, berarti session aktif
@@ -14,8 +15,19 @@ function Header() {
     setIsLoggedIn(!!token);
   }, []);
 
+  useEffect(() => {
+    // Cek apakah token ada di localStorage, jika ada, berarti session aktif
+    const token = localStorage.getItem('id_psikolog');
+    setIsLoggedInPsikolog(!!token);
+  }, []);
+
   const handleButtonClick = () => {
-    if (isLoggedIn) {
+    if (isLoggedIn && !!isLoggedInPsikolog) {
+      // Jika session aktif, arahkan ke halaman profil
+      navigate('/profile');
+      localStorage.removeItem("UsernameUser")
+    }
+    else if (isLoggedInPsikolog && !!isLoggedIn) {
       // Jika session aktif, arahkan ke halaman profil
       navigate('/profile');
       localStorage.removeItem("UsernameUser")
