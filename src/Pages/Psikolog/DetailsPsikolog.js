@@ -170,7 +170,7 @@ function DetailsPsikolog() {
           }
         });
         
-        axios.put("https://api.darwan.me/updateJadwalPsikolog", data)
+        axios.put("https://api.darwan.me/api/updateJadwalPsikolog", data)
         .then((response) => {
           console.log(response.data);
           // Lakukan tindakan yang diperlukan setelah berhasil registrasi
