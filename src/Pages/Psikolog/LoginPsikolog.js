@@ -15,7 +15,7 @@ function LoginPsikolog() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:9000/api/psikolog/loginPsikolog", { username, password })
+      .post("https:/api.darwan.me/api/psikolog/loginPsikolog", { username, password })
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
@@ -23,7 +23,7 @@ function LoginPsikolog() {
         navigate('/psikolog/profile');
 
         // Simpan status login (misalnya token) dalam localStorage
-        localStorage.setItem('id_psikolog', 'hallo');
+        localStorage.setItem('id_psikolog', username);
       })
       .catch((error) => {
         console.error(error.response.data);
@@ -34,7 +34,7 @@ function LoginPsikolog() {
   let navigate = useNavigate()
 
   // Cek apakah data sesi (misalnya token) ada dalam localStorage
-  const isLoggedIn = !!localStorage.getItem('id_psikolog');
+  const isLoggedIn = localStorage.getItem('id_psikolog');
 
   if (isLoggedIn) {
     // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
