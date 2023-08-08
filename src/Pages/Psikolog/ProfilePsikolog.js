@@ -26,9 +26,9 @@ function ProfilePsikolog() {
   return (
    <>
    <Navbar />
-   <div className="profile-psikolog w-full min-h-screen py-20 fontLoginn">
+   <div className="profile-psikolog w-full min-h-screen py-20">
       <div className="container mx-auto px-2">
-        <h1 className="font-bold text-3xl mb-24">Profile Psikolog</h1>
+        <h1 className="font-bold text-3xl mb-24 ml-8">Profile Psikolog</h1>
         <div className="grid md:grid-cols-2 grid-cols-1 grid-rows-1 items-center gap-8">
           <img src={iniWeh} alt="unsplash.com" className="rounded-full md:w-80 md:h-80 w-60 h-60 mx-auto" />
           <div className="text-center">
@@ -41,7 +41,7 @@ function ProfilePsikolog() {
             </div>
           </div>
         </div>
-        <div className="mt-28">
+        <div className="mt-28 px-8">
           <div className="md:text-start text-end">
             <button className="border border-black px-10 py-2 rounded-full mb-14">Pesanan Aktif</button>
           </div>
