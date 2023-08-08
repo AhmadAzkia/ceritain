@@ -145,16 +145,20 @@ console.log(psikolog);
 
               <div>
               {selectedPsikolog && (
-                <h2 className="text-center mt-2 font-medium text-base md:text-lg">{selectedPsikolog.nama_psikolog}</h2>
+                <div>
+                  <h2 className="text-center mt-2 font-medium text-base md:text-lg">{selectedPsikolog.nama_psikolog}</h2>
+                  <h3 className="text-center text-xs md:text-base">Spesialisasi {selectedPsikolog.spesialisasi}</h3>
+                </div>
                 )}
-                <h3 className="text-center text-sm md:text-base">S1 Psikologi</h3>
-                
               </div>
            
 
               <div className="text-xs md:text-sm text-center mt-10">
-                <p>Tanggal : 15 Agustus 2022</p>
-                <p>Jam : 10;30</p>
+                <p>Nama Pemesan : {getPesanan.nama_user}</p>
+                <p>Email : {getPesanan.email_user}</p>
+                <p>No Telepon : {getPesanan.noTelepon_user}</p>
+                <p>Tanggal : {getPesanan.tanggalPesan}</p>
+                <p>Jam : {getPesanan.jamPesan}</p>
               </div>
 
               <div className="mt-5 mb-5

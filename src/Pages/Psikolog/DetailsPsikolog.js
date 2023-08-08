@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import ImgLocation from "../../components/img/doctor/location.png";
 import Navbar from "../../components/home/Navbar";
@@ -26,6 +26,9 @@ function DetailsPsikolog() {
   const [idJadwal, setIdJadwal] = useState("");
   // Inisialisasi User
   const [User, setSelectedUser] = useState(null);
+
+  // NAvigate
+  const navigate = useNavigate();
 
   console.log(idJadwal)
   useEffect(() => {
@@ -144,6 +147,7 @@ function DetailsPsikolog() {
     if (Psikolog && User ) {
       const data = {
         idPsikolog: Psikolog.id_psikolog, // Ambil id dari Psikolog
+        namaPsikolog: Psikolog.nama_psikolog,
         idUser: User.id_user, // Ambil id dari User
         namaUser: nama,
         emailUser: email,
@@ -174,7 +178,6 @@ function DetailsPsikolog() {
         .then((response) => {
           console.log(response.data);
           // Lakukan tindakan yang diperlukan setelah berhasil registrasi
-          alert("Berhasil Hapu");
         })
         .catch((error) => {
           console.error(error.response.data);
@@ -185,6 +188,19 @@ function DetailsPsikolog() {
             // Jika ada kesalahan lain atau respon tidak terdefinisi, tampilkan pesan kesalahan umum
             alert('Error Maneh.');
           }
+        });
+
+        axios.post("https://api.darwan.me/api/sendEmail", data)
+        .then((response) => {
+          console.log(response.data);
+          // Lakukan tindakan yang diperlukan setelah berhasil registrasi
+          alert(`Silakan Cek email ${data.emailUser} untuk melihat details pesanan`)
+          navigate('/profile')
+        })
+
+        .catch((error) => {
+          console.error(error.response.data);
+          alert("eroor")
         });
       
     } else {
