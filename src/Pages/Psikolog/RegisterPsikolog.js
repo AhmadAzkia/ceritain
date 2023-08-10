@@ -184,7 +184,7 @@ function RegisterPsikolog() {
             </div>
           <div className="flex flex-row gap-2 mt-5 mb-7 pl-5">
           <p className="text-sm fontLoginn">Already have an account?</p>
-          <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/login')}>Log In</button>
+          <button className="font-semibold text-sm fontLoginn" onClick={()=>navigate('/psikolog/admin/login')}>Log In</button>
           </div>
         </div>
       </div>
