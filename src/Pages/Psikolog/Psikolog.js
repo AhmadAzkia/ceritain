@@ -50,11 +50,15 @@ function Psikolog() {
 
   // Cek apakah data sesi (misalnya token) ada dalam localStorage
   const isLoggedIn = localStorage.getItem('UsernameUser');
+  const isLoggedInPsikolog = localStorage.getItem('id_psikolog');
 
-  if (!isLoggedIn) {
+  if (!isLoggedIn && !isLoggedInPsikolog) {
     // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
     navigate('/login');
-    return null;
+  }
+  else if (!isLoggedIn && isLoggedInPsikolog) {
+    // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
+    navigate('/psikolog/profile');
   }
   
   return (

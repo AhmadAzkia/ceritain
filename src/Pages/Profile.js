@@ -19,7 +19,6 @@ function Profile() {
   const [pesanan, setPesanan] = useState([]);
   const [psikolog, setPsikolog] = useState([]);
 
-console.log(psikolog);
   useEffect(() => {
     fetchUser();
   }, []);
@@ -32,7 +31,7 @@ console.log(psikolog);
     if (pesanan.length > 0) {
       fetchPsikolog(pesanan);
     }
-}, [pesanan]);
+  }, [pesanan]);
   
   // Mengambil User Berdasarkan session
   const fetchUser = async () => {

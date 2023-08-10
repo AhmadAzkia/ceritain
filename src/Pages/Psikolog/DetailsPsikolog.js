@@ -15,6 +15,7 @@ function DetailsPsikolog() {
   const [Psikolog, setPsikolog] = useState(null);
   const [JadwalPsikolog, setJadwalPsikolog] = useState(null);
   const isLoggedInUser = localStorage.getItem('UsernameUser');
+  const isLoggedInPsikolog = localStorage.getItem('id_psikolog');
 
   // Inisialisasi Jam yang dipilih dan Tanggal yang dipilih
   const [selectedJam, setSelectedJam] = useState(null);
@@ -27,7 +28,7 @@ function DetailsPsikolog() {
   const [idJadwal, setIdJadwal] = useState("");
   // Inisialisasi User
   const [User, setSelectedUser] = useState(null);
-  
+
   // NAvigate
   const navigate = useNavigate();
 
@@ -209,8 +210,12 @@ function DetailsPsikolog() {
     }
   };
 
-  if(!isLoggedInUser) {
+  if(!isLoggedInUser && !isLoggedInPsikolog) {
     navigate('/profile');
+  }
+
+  else if(!isLoggedIn && isLoggedInPsikolog) {
+    navigate('/psikolog/profile')
   }
 
   return (
@@ -222,7 +227,7 @@ function DetailsPsikolog() {
         <div className="flex flex-col items-center mt-14 lg:flex-row md:justify-between">
           <div className="text-center lg:w-1/2 lg:mr-10 md:mx-14">
             <h1 className="text-2xl font-bold mb-4 fontLoginn md:text-4xl">{Psikolog.nama_psikolog}</h1>
-            <small className="text-slate-500 mb-6 block md:text-lg"> Spesialisasi {Psikolog.spesialisasi}</small>
+            <small className="text-slate-500 mb-6 block md:text-lg/loose fontDeskripsi"> Spesialisasi {Psikolog.spesialisasi}</small>
 
             <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mt-4 md:w-52 md:h-52">
                 <img src={Psikolog.imageurl} className="w-full h-full object-cover" alt="" />
