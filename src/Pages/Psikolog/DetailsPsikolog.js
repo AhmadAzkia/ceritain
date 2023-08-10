@@ -14,6 +14,7 @@ function DetailsPsikolog() {
 
   const [Psikolog, setPsikolog] = useState(null);
   const [JadwalPsikolog, setJadwalPsikolog] = useState(null);
+  const isLoggedInUser = localStorage.getItem('UsernameUser');
 
   // Inisialisasi Jam yang dipilih dan Tanggal yang dipilih
   const [selectedJam, setSelectedJam] = useState(null);
@@ -26,7 +27,7 @@ function DetailsPsikolog() {
   const [idJadwal, setIdJadwal] = useState("");
   // Inisialisasi User
   const [User, setSelectedUser] = useState(null);
-
+  
   // NAvigate
   const navigate = useNavigate();
 
@@ -207,6 +208,10 @@ function DetailsPsikolog() {
       alert('Data psikolog atau data user tidak tersedia.');
     }
   };
+
+  if(!isLoggedInUser) {
+    navigate('/profile');
+  }
 
   return (
     <>

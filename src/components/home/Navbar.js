@@ -13,17 +13,20 @@ function Header() {
 
   let logoutText = ""
   let textProfile = ""
+  let urlProfile = ""
 
   // Logika Session
   if (isLoggedIn && !isLoggedInPsikolog) {
     // Jika session aktif, arahkan ke halaman profil
     logoutText = "Logout User"
     textProfile = "Profile User"
+    urlProfile = "/profile"
   }
   else if (!isLoggedIn && isLoggedInPsikolog) {
     // Jika session aktif, arahkan ke halaman profil
     logoutText = "Logout Psikolog"
-    logoutText = "Profile Psikolog"
+    textProfile = "Profile Psikolog"
+    urlProfile = "/psikolog/profile"
   } else {
     logoutText = "Login User"
     // Jika belum login, arahkan ke halaman login
@@ -74,7 +77,7 @@ function Header() {
             <a href="/psikolog" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16 ">Janji Tatap Muka</a>
             <a href="/#feedback" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Testimoni</a>
             <a href="" className="text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16">Tentang Kami</a>
-            <a href="" className={`${isLoggedIn || isLoggedInPsikolog ? 'block' : 'hidden' } text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16`}>{textProfile}</a>
+            <a href={urlProfile} className={`${isLoggedIn || isLoggedInPsikolog ? 'block' : 'hidden' } text-black block px-6 py-2 fontLoginn md:text-1xl md:px-16`}>{textProfile}</a>
           </div>
           <div className="flex flex-col md:flex-row px-4 py-4">
             <button className={`bgWarna text-white rounded-xl w-36 md:h-9 md:w-32 fontLoginn text-md hover:shadow-md mr-4`} onClick={handleButtonClick}> {logoutText} </button>

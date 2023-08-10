@@ -74,16 +74,13 @@ function ProfilePsikolog() {
         const response = await fetch(`https://api.darwan.me/user`);
         const data = await response.json();
         
-        const selectedUser = data.find((getuser) => getuser.id_user === JanjiTemu.id_user);
+        const selectedUser = data.find((getuser) => getuser.id_user === 1);
         setUser(selectedUser);
 
       } catch (error) {
       console.log(error.message);
       }
     };
-
-    
-
 
   return (
    <>
@@ -120,7 +117,8 @@ function ProfilePsikolog() {
                   <p className="text-gray-500">S1 Psikolog</p>
 
                     <div>
-                      </div>
+
+                    </div>
 
                     <div className="flex justify-center mt-1 mr-2 md:mr-4">
                       <img src={calendar} className="w-4 h-4 mr-2" />
