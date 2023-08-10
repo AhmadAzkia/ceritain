@@ -90,7 +90,7 @@ function Profile() {
     .then((response) => {
      console.log(response.data);
      // Lakukan tindakan yang diperlukan setelah berhasil registrasi
-     alert("Status berhasil di ubah Dikonfirmasi")
+     alert("Status berhasil di ubah")
      window.location.reload();
 
      // Jika berhasil Register setRedirect nya menjadi tRUE
