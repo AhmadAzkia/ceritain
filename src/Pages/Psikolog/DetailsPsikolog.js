@@ -300,8 +300,8 @@ function DetailsPsikolog() {
 
 
       <div className="animate-fade-in text-center mt-16 md:mt-20">
-        <h1 className="text-2xl font-bold mb-4 fontLoginn">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, adipisci.</h1>
-        <p className="text-gray-600 text-sm/loose fontDeskripsi">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <h1 className="text-2xl font-bold mb-4 fontLoginn">Yuk booking Psikolog kesayangan anda di Ceritain, Sekarang juga!</h1>
+        <p className="text-gray-600 text-sm/loose fontDeskripsi">Pesan & Booking sekarang Psikolog kesayangan anda! Agar tidak keduluan orang lain.</p>
       </div>
 
       {/* Form Untuk Submit Pemesanan */}

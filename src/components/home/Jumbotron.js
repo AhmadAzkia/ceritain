@@ -37,7 +37,7 @@ function Jumbotron() {
         </div>
 
           <div className="mt-8">
-            <img className="md:max-w-3xl" src={logo} alt="" />
+            <img className="md:max-w-xl md:mr-10" src={logo} alt="" />
           </div>
       </div>
 
