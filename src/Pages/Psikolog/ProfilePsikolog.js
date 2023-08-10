@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import iniWeh from "../../components/img/darwan.jpg";
 import clock from "../../components/img/doctor/clock.png";
 import calendar from "../../components/img/doctor/calendar.png";
+import axios from "axios";
 import '../../App.css'
 import '../../css/font.css';
 
@@ -16,7 +17,7 @@ function ProfilePsikolog() {
     const [Psikolog, setPsikolog] = useState(null);
     const [JanjiTemu, setJanjiTemu] = useState([]);
     const [user, setUser] = useState([]);
-    console.log(user)
+
     // Memanggil Fetch Psikolog saat di Render pertama kali
     useEffect(() => {
       fetchPsikolog();
@@ -85,6 +86,35 @@ function ProfilePsikolog() {
       }
     };
 
+    function setStatus(idJanjiTemu, status) {
+      console.log("Hallo")
+     // Mengirim permintaan PUT ke server untuk mengubah status
+     axios
+      .put("https://api.darwan.me/api/JanjiTemu/setStatus", {
+        idJanjiTemu: idJanjiTemu,
+        status: status
+      })
+      .then((response) => {
+       console.log(response.data);
+       // Lakukan tindakan yang diperlukan setelah berhasil registrasi
+       alert("Status berhasil di ubah Dikonfirmasi")
+       window.location.reload();
+
+       // Jika berhasil Register setRedirect nya menjadi tRUE
+       
+      })
+      .catch((error) => {
+        console.error(error.response.data);
+        if (error.response.status === 409 && error.response.data.msg === 'Username is already taken') {
+          // Jika status 409 (Conflict) dan pesan 'Username is already taken', tampilkan alert sesuai dengan respons API
+          alert('Username sudah ada. Coba gunakan username lain.');
+        } else {
+          // Jika ada kesalahan lain atau respon tidak terdefinisi, tampilkan pesan kesalahan umum
+          alert('Registrasi Gagal! Periksa kembali username atau password');
+        }
+      });
+    };
+
   return (
    <>
    <Navbar />
@@ -126,9 +156,9 @@ function ProfilePsikolog() {
                 )}
                 <div className="text-center">
                   <h1 className="font-semibold text-xl text-gray-700 mt-2">{listJanjiTemu.nama_user}</h1>
-                  <p className="text-gray-500">S1 Psikolog</p>
+                  <p className="text-gray-500">{listJanjiTemu.email_user}</p>
 
-                  <div className="flex justify-center mt-1 mr-2 md:mr-4">
+                  <div className="flex justify-center mt-4 mr-2 md:mr-4">
                     <img src={calendar} className="w-4 h-4 mr-2" />
                     <p>{listJanjiTemu.tanggalPesan}</p>
                   </div>
@@ -138,7 +168,13 @@ function ProfilePsikolog() {
                     <p className="ml-3">{listJanjiTemu.jamPesan}</p>
                   </div>
 
-                  <button className="bg-blue-600 w-40 py-2 rounded-lg mx-auto text-white font-semibold hover:bg-blue-700 transition-colors mt-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                  <button className={`w-40 py-2 rounded-lg mx-auto text-white font-semibold  transition-colors mt-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
+                      listJanjiTemu.status === 'Menunggu'
+                      ? 'bg-red-500 hover:bg-red-700'
+                      : listJanjiTemu.status === 'Dikonfirmasi'
+                      ? 'bg-blue-500'
+                      : 'bg-green-500'
+                      }`} onClick={() => { if (listJanjiTemu.status === 'Menunggu') { setStatus(listJanjiTemu.id, listJanjiTemu.status); } }} disabled={listJanjiTemu.status !== 'Menunggu'}>
                     {listJanjiTemu.status}
                   </button>
                 </div>

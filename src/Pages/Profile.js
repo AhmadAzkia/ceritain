@@ -3,6 +3,7 @@ import Navbar from "../components/home/Navbar";
 import Footer from "../components/home/Footer";
 import clock from "../components/img/doctor/clock.png";
 import calendar from "../components/img/doctor/calendar.png";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import '../App.css'
 import '../css/font.css';
@@ -77,7 +78,35 @@ function Profile() {
       console.log(error.message);
     }
   };
-  
+
+  function setStatus(idJanjiTemu, status) {
+    console.log("Hallo")
+   // Mengirim permintaan PUT ke server untuk mengubah status
+   axios
+    .put("https://api.darwan.me/api/JanjiTemu/setStatus", {
+      idJanjiTemu: idJanjiTemu,
+      status: status
+    })
+    .then((response) => {
+     console.log(response.data);
+     // Lakukan tindakan yang diperlukan setelah berhasil registrasi
+     alert("Status berhasil di ubah Dikonfirmasi")
+     window.location.reload();
+
+     // Jika berhasil Register setRedirect nya menjadi tRUE
+     
+    })
+    .catch((error) => {
+      console.error(error.response.data);
+      if (error.response.status === 409 && error.response.data.msg === 'Username is already taken') {
+        // Jika status 409 (Conflict) dan pesan 'Username is already taken', tampilkan alert sesuai dengan respons API
+        alert('Username sudah ada. Coba gunakan username lain.');
+      } else {
+        // Jika ada kesalahan lain atau respon tidak terdefinisi, tampilkan pesan kesalahan umum
+        alert('Registrasi Gagal! Periksa kembali username atau password');
+      }
+    });
+  };
 
     if (!isLoggedIn) {
       // Jika pengguna sudah login, arahkan ke halaman lain (misalnya halaman profile)
@@ -180,7 +209,13 @@ function Profile() {
 
                 <div className="mt-5 mb-5
                 text-sm text-center">
-                  <button className="border w-32 md:w-40 h-6 md:h-8 bgWarna text-white rounded-lg hover:shadow-md">{getPesanan.status}</button>
+                  <button className={`border w-32 md:w-40 h-6 md:h-8 text-white rounded-lg hover:shadow-md ${
+                      getPesanan.status === 'Menunggu'
+                      ? 'bg-red-500'
+                      : getPesanan.status === 'Dikonfirmasi'
+                      ? 'bg-blue-500 hover:bg-blue-700'
+                      : 'bg-green-500'
+                      }`} onClick={() => { if (getPesanan.status === 'Dikonfirmasi') { setStatus(getPesanan.id, getPesanan.status); } }} disabled={getPesanan.status !== 'Dikonfirmasi'}>{getPesanan.status}</button>
                 </div>
               </div>
             </div>
@@ -192,10 +227,10 @@ function Profile() {
 
       <div className="text-center mt-6 md:mt-16">     
         <button class="inline-flex justify-center items-center mx-5 py-3 px-4 text-xs text-center text-white rounded-lg bg-[#5A96E3] hover:bg-blue-800 md:ml-7 md:text-sm fontLoginn" onClick={()=>navigate('/psikolog')}>
-                  Buat Janji Temu Sekarang
-                  <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                  </svg>
+          Buat Janji Temu Sekarang
+            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+            </svg>
         </button>
       </div>
 
