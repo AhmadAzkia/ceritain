@@ -108,7 +108,7 @@ function RegisterPsikolog() {
 
   // Jika setRedirect nya true maka Langsung Navigate ke halaman Login
   if (redirectToLogin) {
-      navigate('/login');
+      navigate('/psikolog/admin/login');
       return null;
   }
   return (
