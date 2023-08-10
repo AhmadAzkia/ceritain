@@ -125,7 +125,7 @@ function Profile() {
           <div className="md:flex md:justify-center mt-5 md:mt-10">
             
             <div className="flex justify-center">
-              <img src={user.imageUrl} alt="" className="w-32 h-32 md:w-40 md:h-40"/>
+              <img src={user.imageUrl} alt="" className="w-32 h-32 md:w-40 md:h-40 rounded-full"/>
             </div>
             
             <div className="md:ml-20">
