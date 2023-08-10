@@ -196,8 +196,7 @@ function DetailsPsikolog() {
         .then((response) => {
           console.log(response.data);
           // Lakukan tindakan yang diperlukan setelah berhasil registrasi
-          alert(`Silakan Cek email ${data.emailUser} untuk melihat details pesanan`)
-          navigate('/profile')
+          navigate('/psikolog/kirimemail')
         })
 
         .catch((error) => {

@@ -67,6 +67,28 @@ const aboutUsText = {
         }
     ]
   }
+
+  const PeopleTentangKami = {
+    title: "Tentang Kami",
+    description: "Ceritain di buat oleh beberapa orang mahasiswa Unikom, Kami memilih membuat Ceritain untuk mengikutsertakan kedalam Lomba edufair karena kami terinspirasi dari banyaknya orang yang ingin menceritakan sesuatu, dan inilah hasil dari pemikiran kami terciptalah Ceritain.",
+    reasons: [
+      {
+      nama: "Azkia",
+      description: "FrontEnd Developer",
+      image: azki
+      },
+      {
+        nama: "Dipa",
+        description: "FrontEnd Developer",
+        image: dipa
+      },
+      {
+          nama: "Darwan",
+          description: "BackEnd Developer & Data Analyst",
+          image: darwan
+      }
+    ]
+  }
   
-  export {aboutUsText, FeedbackPeople};
+  export {aboutUsText, FeedbackPeople, PeopleTentangKami};
   
