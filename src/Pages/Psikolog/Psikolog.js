@@ -112,10 +112,10 @@ function Psikolog() {
                 <img src={ImgClock} className="w-4 h-4" alt="Clock" />
               </div>
             </div>
-            <h1 className="text-xl mt-3 font-semibold">{listPsikolog.nama_psikolog}</h1>
-            <small className="text-slate-500 block">Spesialisasi {listPsikolog.spesialisasi}</small>
-            <small className="text-slate-500 block">{listPsikolog.gender}</small>
-            <p className="mb-4 mt-5 text-gray-600 text-sm flex-grow">{listPsikolog.deskripsi}</p>
+            <h1 className="text-xl mt-3 font-semibold fontLoginn">{listPsikolog.nama_psikolog}</h1>
+            <small className="text-slate-500 block fontDeskripsi">Spesialisasi {listPsikolog.spesialisasi}</small>
+            <small className="text-slate-500 block fontDeskripsi">{listPsikolog.gender}</small>
+            <p className="mb-4 mt-5 text-gray-900 text-sm/relaxed flex-grow fontDeskripsi">{listPsikolog.deskripsi}</p>
 
             {/* Iamge Clock */}
             <div className="flex justify-center items-center">
