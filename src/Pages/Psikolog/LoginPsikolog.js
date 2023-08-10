@@ -32,7 +32,7 @@ function LoginPsikolog() {
     e.preventDefault();
 
     axios
-      .post("https:/api.darwan.me/api/psikolog/loginPsikolog", { username, password })
+      .post("https://api.darwan.me/api/psikolog/loginPsikolog", { username, password })
       .then((response) => {
         console.log(response.data);
         // Lakukan tindakan yang diperlukan setelah berhasil login
