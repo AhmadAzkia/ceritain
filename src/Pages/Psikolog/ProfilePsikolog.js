@@ -121,9 +121,9 @@ function ProfilePsikolog() {
    <div className="profile-psikolog w-full min-h-screen py-20">
       <div className="container mx-auto px-2">
         <h1 className="font-bold text-3xl mb-24 ml-8 fontLoginn">Profile Psikolog</h1>
+        {Psikolog && (
         <div className="grid md:grid-cols-2 grid-cols-1 grid-rows-1 items-center gap-8 fontLoginn">
-          <img src={iniWeh} alt="unsplash.com" className="rounded-full md:w-80 md:h-80 w-60 h-60 mx-auto" />
-          {Psikolog && (
+          <img src={Psikolog.imageurl} alt="unsplash.com" className="rounded-full md:w-80 md:h-80 w-60 h-60 mx-auto" />
           <div className="text-center">
             <h1 className="font-bold text-4xl fontLoginn">{Psikolog.nama_psikolog}</h1>
             <p className="font-medium text-gray-500 text-lg fontDeskripsi mt-2">Spesialisasi {Psikolog.spesialisasi}</p>
@@ -133,8 +133,9 @@ function ProfilePsikolog() {
               <button className="bg-blue-600 w-64 py-2 rounded-xl mx-auto text-white font-medium hover:bg-blue-700 transition-all">Lupa Password</button>
             </div>
           </div>
-          )}
+         
         </div>
+         )}
 
         <div className="mt-28 px-8 fontLoginn grid">
           <div className="md:text-start text-end">
